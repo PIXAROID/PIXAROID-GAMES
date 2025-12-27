@@ -33,20 +33,13 @@
             margin-bottom: 8px; font-size: 14px; transition: 0.3s;
             background: rgba(255,255,255,0.1); cursor: pointer;
         }
-        .menu-item svg { width: 20px; height: 20px; fill: #5865F2; }
-        .menu-item:hover { background-color: #00ff88; color: #000; }
+        .menu-item svg { width: 20px; fill: #5865F2; }
 
         /* CONTENIDO PRINCIPAL */
         .main-content {
             margin-left: 240px; width: calc(100% - 240px);
             display: flex; flex-direction: column; align-items: center;
-            min-height: 100vh; padding: 20px 0;
-        }
-
-        .search-container { width: 80%; max-width: 600px; margin-bottom: 30px; }
-        #gameSearch {
-            width: 100%; padding: 15px 20px; border-radius: 30px; border: 2px solid #00ff88;
-            background: rgba(0, 0, 0, 0.7); color: white; font-size: 16px; outline: none;
+            padding: 20px 0;
         }
 
         .glass-box {
@@ -55,33 +48,53 @@
             text-align: center; margin-bottom: 30px;
         }
 
-        h2 { font-family: 'Press Start 2P', cursive; font-size: 16px; color: #00ff88; margin-bottom: 25px; }
-
-        /* BOTONES CATEGORIAS CORREGIDOS */
         .cat-btn {
-            width: 100%; padding: 15px; background: #222;
-            border: 2px solid #444; color: white; font-weight: 600;
-            border-radius: 8px; transition: 0.3s; cursor: pointer; margin-bottom: 12px;
-            font-family: 'Poppins', sans-serif; font-size: 16px;
+            width: 100%; padding: 15px; background: #222; border: 2px solid #444;
+            color: white; border-radius: 8px; cursor: pointer; margin-bottom: 12px;
         }
-        .cat-btn:hover { background: #f1c40f; color: #000; border-color: #f1c40f; }
+        .cat-btn:hover { background: #f1c40f; color: #000; }
 
-        /* LISTA DE ITEMS */
-        .download-section-content { display: none; width: 80%; max-width: 700px; }
         .item-list {
             background: #1a1a1a; margin-bottom: 15px; padding: 20px;
             border-radius: 8px; border-left: 5px solid #f1c40f;
-            display: flex; justify-content: space-between; align-items: center; text-align: left;
+            display: flex; justify-content: space-between; align-items: center;
         }
 
-        .item-title { font-weight: 600; font-size: 1.2em; color: #fff; }
-
-        .btn {
+        .btn-descargar {
             padding: 10px 20px; border-radius: 5px; text-decoration: none;
-            font-weight: bold; font-size: 14px; color: #000;
-            background-color: #f1c40f; transition: 0.2s;
+            font-weight: bold; color: #000; background-color: #f1c40f; cursor: pointer;
         }
-        .btn:hover { background-color: #fff; transform: scale(1.05); }
+
+        /* VENTANA MODAL (EL CARTELITO) */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #1a1a1a; margin: 5% auto; padding: 30px;
+            border: 2px solid #f1c40f; width: 60%; max-width: 500px;
+            border-radius: 15px; position: relative; max-height: 80vh;
+            overflow-y: auto; /* Permite bajar con la ruedita */
+            text-align: center;
+        }
+
+        .close-btn {
+            position: sticky; top: 0; float: right; right: 0;
+            font-size: 28px; font-weight: bold; color: #ff4444; cursor: pointer;
+        }
+
+        .historia-txt {
+            font-size: 16px; line-height: 1.8; color: #ccc; margin: 20px 0;
+            text-align: justify;
+        }
+
+        .final-download {
+            display: inline-block; margin-top: 30px; padding: 15px 30px;
+            background: #00ff88; color: #000; text-decoration: none;
+            font-weight: bold; border-radius: 10px; font-size: 18px;
+        }
 
         @media (max-width: 900px) {
             .sidebar { display: none; }
@@ -94,94 +107,90 @@
     <div class="sidebar">
         <div class="logo">PIXAROID<br>GAMES</div>
         <a onclick="showSection('inicio')" class="menu-item">Inicio</a>
-        <a onclick="showSection('juegos')" class="menu-item">Descargas</a>
-        <a href="https://discord.gg/aAchPaY5" target="_blank" class="menu-item">
-            <svg viewBox="0 0 127.14 96.36"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.71,32.65-1.82,56.6.48,80.21a105.73,105.73,0,0,0,32.22,16.15,77.7,77.7,0,0,0,7.37-12,67.6,67.6,0,0,1-11.9-5.69c.97-.69,1.93-1.39,2.85-2.12a74.22,74.22,0,0,0,65.3,0c.92.73,1.88,1.43,2.85,2.12a67.4,67.4,0,0,1-11.9,5.69,77.91,77.91,0,0,0,7.37,12,105.52,105.52,0,0,0,32.27-16.15C130.39,52.12,120.73,28.53,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5.09-12.73,11.41-12.73S54,46,53.86,53,48.77,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5.09-12.73,11.44-12.73S96.23,46,96.12,53,91,65.69,84.69,65.69Z"/></svg>
-            Discord
-        </a>
+        <a href="https://discord.gg/aAchPaY5" target="_blank" class="menu-item">Discord</a>
     </div>
 
     <div class="main-content">
-        <div class="search-container">
-            <input type="text" id="gameSearch" placeholder="🔍 Buscar juegos, programas..." onkeyup="filterContent()">
-        </div>
-        
         <div class="glass-box" id="seccion-categorias">
             <h2>CATEGORÍAS</h2>
             <button onclick="showSection('juegos')" class="cat-btn">JUEGOS</button>
             <button onclick="showSection('programas')" class="cat-btn">PROGRAMAS</button>
-            <button onclick="showSection('so')" class="cat-btn">SISTEMAS OPERATIVOS</button>
         </div>
 
-        <div class="download-section-content" id="descargas-juegos">
+        <div id="descargas-juegos" style="display:none; width: 80%;">
             <div class="glass-box">
-                <h2>JUEGOS DISPONIBLES</h2>
-
-                <div class="item-list searchable">
-                    <span class="item-title">Five Nights at Freddy's 1</span>
-                    <a href="https://vikingfile.com/f/SoljjjXKuG" target="_blank" class="btn">Descargar ⚡</a>
+                <h2>FNAF SERIES</h2>
+                
+                <div class="item-list">
+                    <span>Five Nights at Freddy's 1</span>
+                    <button class="btn-descargar" onclick="openModal('modal1')">Descargar ⚡</button>
                 </div>
 
-                <div class="item-list searchable">
-                    <span class="item-title">Five Nights at Freddy's 2</span>
-                    <a href="https://vikingfile.com/f/s0IDITAnnv" target="_blank" class="btn">Descargar ⚡</a>
+                <div class="item-list">
+                    <span>Five Nights at Freddy's 2</span>
+                    <button class="btn-descargar" onclick="openModal('modal2')">Descargar ⚡</button>
                 </div>
 
-                <div class="item-list searchable">
-                    <span class="item-title">Five Nights at Freddy's 3</span>
-                    <a href="https://vikingfile.com/f/fdkOjFQq3O" target="_blank" class="btn">Descargar ⚡</a>
+                <div class="item-list">
+                    <span>Five Nights at Freddy's 3</span>
+                    <button class="btn-descargar" onclick="openModal('modal3')">Descargar ⚡</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="download-section-content" id="descargas-programas">
-            <div class="glass-box">
-                <h2>PROGRAMAS</h2>
-                <p>Próximamente...</p>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+            <h2 style="color: #f1c40f;">FNaF 1: La Historia</h2>
+            <div class="historia-txt">
+                Bienvenido a Freddy Fazbear's Pizza. Durante el día, es un lugar de alegría, pero de noche, los animatrónicos Freddy, Bonnie, Chica y Foxy actúan de forma extraña. La leyenda cuenta que cinco niños desaparecieron aquí... Mike Schmidt debe sobrevivir 5 noches vigilando las cámaras y gestionando la energía de las puertas antes de que sea atrapado. <br><br> (Baja para descargar)
+                <br><br><br><br><br><br><br><br><br><br>
+                <a href="https://vikingfile.com/f/SoljjjXKuG" class="final-download">DESCARGAR AHORA ⚡</a>
             </div>
         </div>
+    </div>
 
-        <div class="download-section-content" id="descargas-so">
-            <div class="glass-box">
-                <h2>SISTEMAS OPERATIVOS</h2>
-                <p>Próximamente...</p>
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
+            <h2 style="color: #f1c40f;">FNaF 2: La Precuela</h2>
+            <div class="historia-txt">
+                ¡Nueva y mejorada pizzería! Ahora con los modelos "Toy". Pero algo salió mal con el reconocimiento facial. Jeremy Fitzgerald no tiene puertas para protegerse, solo una máscara de oso para engañarlos y una caja de música que nunca debe dejar de sonar. El pasado del local empieza a revelarse a través de minijuegos sangrientos. <br><br> (Baja para descargar)
+                <br><br><br><br><br><br><br><br><br><br>
+                <a href="https://vikingfile.com/f/s0IDITAnnv" class="final-download">DESCARGAR AHORA ⚡</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
+            <h2 style="color: #f1c40f;">FNaF 3: El Final de Fazbear</h2>
+            <div class="historia-txt">
+                30 años después, el horror revive en una atracción de feria. Springtrap es el único animatrónico real, y dentro de él yace el cuerpo putrefacto de William Afton, el asesino. El guardia debe luchar contra alucinaciones "Phantom" mientras intenta quemar el lugar para liberar las almas de una vez por todas. <br><br> (Baja para descargar)
+                <br><br><br><br><br><br><br><br><br><br>
+                <a href="https://vikingfile.com/f/fdkOjFQq3O" class="final-download">DESCARGAR AHORA ⚡</a>
             </div>
         </div>
     </div>
 
     <script>
+        function openModal(id) { document.getElementById(id).style.display = "block"; }
+        function closeModal(id) { document.getElementById(id).style.display = "none"; }
+        
         function showSection(sectionId) {
-            const sections = document.querySelectorAll('.download-section-content');
-            sections.forEach(s => s.style.display = 'none');
-            const catBox = document.getElementById('seccion-categorias');
-            
-            if (sectionId === 'inicio') {
-                catBox.style.display = 'block';
-                document.getElementById('gameSearch').value = '';
-                filterContent();
-            } else {
-                catBox.style.display = 'block';
-                document.getElementById('descargas-' + sectionId).style.display = 'block';
+            document.getElementById('seccion-categorias').style.display = 'block';
+            if(sectionId === 'juegos') {
+                document.getElementById('descargas-juegos').style.display = 'block';
             }
         }
 
-        function filterContent() {
-            let input = document.getElementById('gameSearch').value.toLowerCase();
-            let items = document.querySelectorAll('.searchable');
-            let sections = document.querySelectorAll('.download-section-content');
-            let catBox = document.getElementById('seccion-categorias');
-            
-            if (input.length > 0) {
-                catBox.style.display = 'none';
-                sections.forEach(s => s.style.display = 'block');
-            } else {
-                catBox.style.display = 'block';
-                sections.forEach(s => s.style.display = 'none');
+        // Cerrar al hacer clic fuera del cuadro
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = "none";
             }
-            items.forEach(item => {
-                let text = item.innerText.toLowerCase();
-                item.style.display = text.includes(input) ? "flex" : "none";
-            });
         }
     </script>
 </body>
