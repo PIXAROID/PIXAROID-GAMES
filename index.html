@@ -7,14 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- ESTILO GENERAL --- */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
             background-color: #000; 
-            /* Fondo de Minecraft con desenfoque */
-            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://i.imgur.com/8Qh4FkQ.jpeg'); 
+            /* AQUÍ ESTÁ TU IMAGEN DE FONDO */
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://storage.googleapis.com/generate-v1-files/image-generation-content/0/image_7f999131-7b0b-4176-b684-554e7f867554.png'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -23,25 +22,22 @@
             min-height: 100vh;
         }
 
-        /* --- BARRA LATERAL --- */
         .sidebar {
             position: fixed;
             left: 0;
             top: 0;
             width: 240px;
             height: 100%;
-            background-color: rgba(10, 10, 10, 0.95);
+            background-color: rgba(10, 10, 10, 0.9);
             padding: 20px;
             box-shadow: 5px 0 15px rgba(0,0,0,0.5);
             z-index: 100;
         }
 
-        /* LOGO PIXELADO ESTILO MINECRAFT */
         .logo {
             font-family: 'Press Start 2P', cursive;
-            font-size: 14px; /* Las fuentes pixeladas se ven mejor chicas */
-            line-height: 1.5;
-            color: #55FF55; /* Verde Minecraft clásico */
+            font-size: 14px;
+            color: #55FF55;
             margin-bottom: 50px;
             text-align: center;
             text-shadow: 3px 3px #003300;
@@ -56,16 +52,13 @@
             margin-bottom: 8px;
             font-size: 14px;
             transition: 0.3s;
-            border-left: 3px solid transparent;
         }
 
         .menu-item:hover, .menu-item.active {
             background-color: rgba(0, 255, 136, 0.1);
             color: #fff;
-            border-left: 3px solid #00ff88;
         }
 
-        /* --- CONTENIDO PRINCIPAL --- */
         .main-content {
             margin-left: 280px; 
             margin-top: 40px;
@@ -74,12 +67,11 @@
         }
 
         .glass-box {
-            background-color: rgba(20, 20, 20, 0.8);
-            backdrop-filter: blur(12px);
+            background-color: rgba(20, 20, 20, 0.75);
+            backdrop-filter: blur(10px);
             border-radius: 12px;
             padding: 40px;
-            border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         h2 {
@@ -89,118 +81,81 @@
             margin-bottom: 25px;
         }
 
-        /* LISTA DE JUEGOS */
-        .game-list {
-            list-style: none;
-            padding: 0;
-        }
-
         .game-item {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255,255,255,0.05);
             margin-bottom: 12px;
             padding: 18px;
             border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .game-title {
-            font-weight: 600;
-            font-size: 1.1em;
-            display: block;
-        }
+        .game-title { font-weight: 600; font-size: 1.1em; }
         
-        .game-info {
-            font-size: 0.85em;
-            color: #777;
-        }
-
-        .tag-rip {
-            background: #ff4444;
-            color: white;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-left: 10px;
-            vertical-align: middle;
-        }
-
-        /* BOTONES */
         .download-section {
-            margin-top: 40px;
+            margin-top: 20px;
             display: flex;
-            gap: 15px;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .btn {
-            padding: 15px;
-            border-radius: 8px;
+            padding: 12px 20px;
+            border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            text-align: center;
-            flex: 1;
-            transition: all 0.3s;
+            font-size: 13px;
+            transition: 0.3s;
             color: white;
-            border: none;
-            cursor: pointer;
+            text-align: center;
         }
 
-        .btn:hover { filter: brightness(1.2); transform: translateY(-2px); }
-        .btn-primary { background: #007bff; }
-        .btn-secondary { background: #28a745; }
+        /* BOTÓN VIKING FILE AMARILLO */
+        .btn-viking {
+            background-color: #f1c40f;
+            color: #000;
+        }
 
-        /* RESPONSIVE */
+        .btn-viking:hover { background-color: #f39c12; }
+
+        .btn-youtube { background-color: #ff0000; }
+        .btn-gofile { background-color: #2196F3; }
+
         @media (max-width: 900px) {
-            .sidebar { width: 60px; padding: 10px; }
-            .logo, .menu-item span { display: none; }
-            .main-content { margin-left: 80px; width: 85%; }
+            .sidebar { display: none; }
+            .main-content { margin-left: auto; margin-right: auto; width: 95%; }
         }
     </style>
 </head>
 <body>
 
     <div class="sidebar">
-        <div class="logo">
-            PIXAROID<br>GAMES
-        </div>
-        
+        <div class="logo">PIXAROID<br>GAMES</div>
         <a href="#" class="menu-item active">Inicio</a>
-        <a href="#" class="menu-item">Juegos Optimizados</a>
-        
-        <a href="https://www.youtube.com/" target="_blank" class="menu-item">
-            Schedule 1 📺
-        </a>
-        
+        <a href="#" class="menu-item">Juegos</a>
         <a href="#" class="menu-item">Programas</a>
         <a href="#" class="menu-item">Discord</a>
     </div>
 
     <div class="main-content">
         <div class="glass-box">
-            <h2>PROYECTOS DESTACADOS</h2>
+            <h2>JUEGOS DESTACADOS</h2>
             
-            <div class="game-list">
-                <div class="game-item">
-                    <div>
-                        <span class="game-title">Grand Theft Auto V <span class="tag-rip">RIP V1.4</span></span>
-                        <span class="game-info">Optimizado para 12GB | Full Español</span>
-                    </div>
-                </div>
-
-                <div class="game-item">
-                    <div>
-                        <span class="game-title">Minecraft OptiPack</span>
-                        <span class="game-info">Incluye Shaders para bajos recursos</span>
-                    </div>
+            <div class="game-item">
+                <span class="game-title">Grand Theft Auto V RIP V1.4 (12GB)</span>
+                
+                <div class="download-section">
+                    <a href="LINK_DE_TU_ISO" class="btn btn-viking">Viking File ⚡</a>
+                    
+                    <a href="https://www.youtube.com/" target="_blank" class="btn btn-youtube">Schedule 1 (YouTube)</a>
+                    
+                    <a href="#" class="btn btn-gofile">GoFile</a>
                 </div>
             </div>
 
-            <h2>DESCARGAS DISPONIBLES</h2>
-            <div class="download-section">
-                <a href="#" class="btn btn-secondary">DESCARGAR (MediaFire)</a>
-                <a href="#" class="btn btn-primary">DESCARGAR (GoFile)</a>
+            <div class="game-item">
+                <span class="game-title">Minecraft OptiPack</span>
+                <div class="download-section">
+                    <a href="#" class="btn btn-viking">Viking File ⚡</a>
+                </div>
             </div>
         </div>
     </div>
