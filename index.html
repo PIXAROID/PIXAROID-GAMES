@@ -11,61 +11,51 @@
         body {
             margin: 0; padding: 0;
             font-family: 'Poppins', sans-serif;
-            background-color: #1a1a1a;
+            background-color: #000;
             color: white; display: flex; min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* FONDO ANIMADO DE OLAS GRISES (SIN VIDEO EXTERNO) */
-        .ocean { 
-            height: 100%; width: 100%; position: fixed;
-            top: 0; left: 0; background: #0f0f0f;
-            z-index: -1; filter: blur(10px); /* El blur que pediste */
+        /* CONTENEDOR DEL VIDEO DE FONDO */
+        .video-background {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
         }
 
-        .wave {
-            background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x; 
-            position: absolute; top: -150px; width: 6400px; height: 100%;
-            animation: wave 20s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
-            transform: translate3d(0, 0, 0); opacity: 0.1; /* Gris oscuro clean */
-        }
-
-        .wave:nth-of-type(2) {
-            top: -120px; animation: wave 15s cubic-bezier(0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 15s ease -1.25s infinite;
-            opacity: 0.15;
-        }
-
-        @keyframes wave {
-            0% { margin-left: 0; }
-            100% { margin-left: -1600px; }
-        }
-        @keyframes swell {
-            0%, 100% { transform: translate3d(0, -25px, 0); }
-            50% { transform: translate3d(0, 5px, 0); }
+        #bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* EL BLUR QUE PEDISTE */
+            filter: blur(10px) brightness(0.5); 
+            transform: scale(1.1); /* Para evitar bordes blancos por el blur */
         }
 
         /* BARRA LATERAL */
         .sidebar {
             position: fixed; left: 0; top: 0; width: 240px; height: 100%;
-            background-color: rgba(10, 10, 10, 0.9); padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); padding: 20px;
             box-shadow: 5px 0 15px rgba(0,0,0,0.5); z-index: 100;
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255,255,255,0.1);
         }
         .logo {
             font-family: 'Press Start 2P', cursive; font-size: 14px;
             color: #55FF55; margin-bottom: 50px; text-align: center;
-            line-height: 1.5;
         }
         .menu-item {
             display: flex; align-items: center; gap: 12px; padding: 12px 15px;
             color: #ffffff; text-decoration: none; border-radius: 5px;
             margin-bottom: 8px; font-size: 14px; transition: 0.3s;
-            background: rgba(255,255,255,0.05); cursor: pointer;
+            background: rgba(255,255,255,0.1); cursor: pointer;
         }
         .menu-item svg { width: 20px; height: 20px; fill: #5865F2; }
         .menu-item:hover { background-color: #00ff88; color: #000; transform: translateX(5px); }
 
-        /* CONTENIDO */
+        /* CONTENIDO PRINCIPAL */
         .main-content {
             margin-left: 240px; width: calc(100% - 240px);
             display: flex; flex-direction: column; align-items: center;
@@ -73,29 +63,30 @@
         }
 
         .glass-box {
-            background-color: rgba(30, 30, 30, 0.6); border-radius: 15px;
+            background-color: rgba(20, 20, 20, 0.6); border-radius: 15px;
             padding: 40px; border: 1px solid rgba(255,255,255,0.1); 
             width: 100%; max-width: 600px; text-align: center;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.8s ease;
         }
 
-        /* BOTONES CATEGORÍAS */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
         .cat-btn {
-            width: 100%; padding: 16px; background: rgba(50, 50, 50, 0.8); border: 1px solid #444;
+            width: 100%; padding: 16px; background: rgba(40, 40, 40, 0.8); border: 1px solid #555;
             color: white; border-radius: 10px; cursor: pointer; margin-bottom: 15px;
             font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600;
             transition: all 0.3s ease;
         }
-        .cat-btn:hover { background: #f1c40f; color: #000; border-color: #f1c40f; transform: translateY(-3px); }
+        .cat-btn:hover { background: #f1c40f; color: #000; border-color: #f1c40f; transform: scale(1.02); }
 
-        /* LISTAS */
-        .section-content { display: none; width: 100%; max-width: 600px; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
+        .section-content { display: none; width: 100%; max-width: 600px; margin-top: 20px; }
+        
         .item-list {
-            background: rgba(40, 40, 40, 0.8); margin-bottom: 12px; padding: 18px;
+            background: rgba(30, 30, 30, 0.8); margin-bottom: 12px; padding: 20px;
             border-radius: 10px; border-left: 5px solid #f1c40f;
             display: flex; justify-content: space-between; align-items: center;
+            backdrop-filter: blur(5px);
         }
 
         .btn-abrir {
@@ -107,20 +98,21 @@
         /* MODALES */
         .modal {
             display: none; position: fixed; z-index: 1000; left: 0; top: 0;
-            width: 100%; height: 100%; background-color: rgba(0,0,0,0.85);
-            backdrop-filter: blur(8px);
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(15px);
         }
         .modal-content {
-            background-color: #1a1a1a; margin: 5% auto; padding: 30px;
-            border: 2px solid #f1c40f; width: 90%; max-width: 500px;
-            border-radius: 20px; max-height: 80vh; overflow-y: auto;
+            background-color: rgba(20, 20, 20, 0.95); margin: 5% auto; padding: 30px;
+            border: 1px solid #f1c40f; width: 90%; max-width: 500px;
+            border-radius: 20px; max-height: 80vh; overflow-y: auto; color: #fff;
         }
         .close-btn { float: right; font-size: 30px; color: #ff4444; cursor: pointer; }
         .requisitos { background: rgba(0,255,136,0.1); padding: 15px; border-radius: 10px; border-left: 3px solid #00ff88; margin: 20px 0; }
+        
         .link-descarga {
             display: block; width: 100%; text-align: center; background: #00ff88; 
             color: #000; padding: 15px; text-decoration: none; font-weight: bold; 
-            border-radius: 10px; margin-top: 40px;
+            border-radius: 10px; margin-top: 100px; /* Espacio para obligar a bajar */
         }
 
         @media (max-width: 900px) { .sidebar { display: none; } .main-content { margin-left: 0; width: 100%; } }
@@ -128,9 +120,11 @@
 </head>
 <body>
 
-    <div class="ocean">
-        <div class="wave"></div>
-        <div class="wave"></div>
+    <div class="video-background">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="https://v1.shared.video/v/97191f630800b6540166668700201010.mp4" type="video/mp4">
+            <source src="https://static.videezy.com/system/resources/previews/000/019/331/original/Dark_Ocean_Waves.mp4" type="video/mp4">
+        </video>
     </div>
 
     <div class="sidebar">
@@ -171,9 +165,9 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
             <h3 style="color:#f1c40f">FNaF 1: Historia</h3>
-            <p>Sobrevive al turno noche en la pizzería más famosa del mundo.</p>
-            <div class="requisitos"><h4>Mínimos:</h4><p>RAM: 1GB | Espacio: 250MB</p></div>
-            <div style="height: 200px;"></div>
+            <p>Sobrevive 5 noches en la pizzería vigilando a Freddy y sus amigos.</p>
+            <div class="requisitos"><h4>Requisitos:</h4><p>RAM: 1GB | Espacio: 250MB</p></div>
+            <p style="color:#777">Baja para ver el link...</p>
             <a href="https://vikingfile.com/f/SoljjjXKuG" target="_blank" class="link-descarga">LINK: https://vikingfile.com/f/SoljjjXKuG</a>
         </div>
     </div>
@@ -182,9 +176,9 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
             <h3 style="color:#f1c40f">FNaF 2: Historia</h3>
-            <p>Sin puertas, solo una máscara y tu linterna contra los Toys.</p>
-            <div class="requisitos"><h4>Mínimos:</h4><p>RAM: 1GB | Espacio: 300MB</p></div>
-            <div style="height: 200px;"></div>
+            <p>Usa la máscara para engañar a los animatrónicos Toy.</p>
+            <div class="requisitos"><h4>Requisitos:</h4><p>RAM: 1GB | Espacio: 300MB</p></div>
+            <p style="color:#777">Baja para ver el link...</p>
             <a href="https://vikingfile.com/f/s0IDITAnnv" target="_blank" class="link-descarga">LINK: https://vikingfile.com/f/s0IDITAnnv</a>
         </div>
     </div>
@@ -193,9 +187,9 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
             <h3 style="color:#f1c40f">FNaF 3: Historia</h3>
-            <p>30 años después... Springtrap despierta.</p>
-            <div class="requisitos"><h4>Mínimos:</h4><p>RAM: 2GB | Espacio: 250MB</p></div>
-            <div style="height: 200px;"></div>
+            <p>Springtrap es el único real, pero las alucinaciones te volverán loco.</p>
+            <div class="requisitos"><h4>Requisitos:</h4><p>RAM: 2GB | Espacio: 250MB</p></div>
+            <p style="color:#777">Baja para ver el link...</p>
             <a href="https://vikingfile.com/f/fdkOjFQq3O" target="_blank" class="link-descarga">LINK: https://vikingfile.com/f/fdkOjFQq3O</a>
         </div>
     </div>
