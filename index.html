@@ -33,9 +33,10 @@
             margin-bottom: 8px; font-size: 14px; transition: 0.3s;
             background: rgba(255,255,255,0.1); cursor: pointer;
         }
+        .menu-item svg { width: 20px; height: 20px; fill: #5865F2; }
         .menu-item:hover { background-color: #00ff88; color: #000; }
 
-        /* CONTENIDO PRINCIPAL CENTRADO */
+        /* CONTENIDO PRINCIPAL */
         .main-content {
             margin-left: 240px; width: calc(100% - 240px);
             display: flex; flex-direction: column; align-items: center;
@@ -45,16 +46,19 @@
         .glass-box {
             background-color: rgba(20, 20, 20, 0.9); border-radius: 12px;
             padding: 40px; border: 1px solid #333; width: 90%; max-width: 600px;
-            text-align: center;
+            text-align: center; margin-bottom: 20px;
         }
 
+        /* BOTONES CATEGORIAS */
         .cat-btn {
             width: 100%; padding: 15px; background: #222; border: 2px solid #444;
             color: white; border-radius: 8px; cursor: pointer; margin-bottom: 12px;
-            font-family: 'Poppins', sans-serif; font-size: 16px;
+            font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600;
         }
-        .cat-btn:hover { background: #f1c40f; color: #000; }
+        .cat-btn:hover { background: #f1c40f; color: #000; border-color: #f1c40f; }
 
+        /* LISTA DE ITEMS */
+        .section-content { display: none; width: 90%; max-width: 600px; }
         .item-list {
             background: #1a1a1a; margin-bottom: 15px; padding: 20px;
             border-radius: 8px; border-left: 5px solid #f1c40f;
@@ -62,92 +66,76 @@
         }
 
         .btn-abrir {
-            padding: 10px 20px; border-radius: 5px; text-decoration: none;
-            font-weight: bold; color: #000; background-color: #f1c40f; cursor: pointer; border: none;
+            padding: 10px 20px; border-radius: 5px; font-weight: bold; 
+            color: #000; background-color: #f1c40f; cursor: pointer; border: none;
         }
 
-        /* VENTANA MODAL */
+        /* MODALES */
         .modal {
             display: none; position: fixed; z-index: 1000; left: 0; top: 0;
-            width: 100%; height: 100%; background-color: rgba(0,0,0,0.9);
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.95);
             backdrop-filter: blur(5px);
         }
-
         .modal-content {
             background-color: #1a1a1a; margin: 5% auto; padding: 30px;
             border: 2px solid #f1c40f; width: 80%; max-width: 500px;
             border-radius: 15px; position: relative; max-height: 80vh;
             overflow-y: auto; text-align: left;
         }
-
-        .close-btn {
-            position: sticky; top: 0; float: right;
-            font-size: 30px; font-weight: bold; color: #ff4444; cursor: pointer;
-        }
-
-        .historia-txt { font-size: 15px; line-height: 1.6; color: #ccc; margin-bottom: 20px; }
-        
-        .requisitos {
-            background: rgba(255, 255, 255, 0.05); padding: 15px;
-            border-radius: 8px; border-left: 3px solid #00ff88; margin-bottom: 20px;
-        }
-        .requisitos h4 { color: #00ff88; margin: 0 0 10px 0; }
-
+        .close-btn { position: sticky; top: 0; float: right; font-size: 30px; color: #ff4444; cursor: pointer; }
+        .requisitos { background: rgba(0,255,136,0.1); padding: 15px; border-radius: 8px; border-left: 3px solid #00ff88; margin: 20px 0; }
         .link-descarga {
-            display: block; width: 100%; text-align: center;
-            background: #00ff88; color: #000; padding: 15px;
-            text-decoration: none; font-weight: bold; border-radius: 8px;
-            margin-top: 50px; /* Espacio para que tengan que bajar */
+            display: block; width: 100%; text-align: center; background: #00ff88; 
+            color: #000; padding: 15px; text-decoration: none; font-weight: bold; 
+            border-radius: 8px; margin-top: 50px;
         }
 
-        @media (max-width: 900px) {
-            .sidebar { display: none; }
-            .main-content { margin-left: 0; width: 100%; }
-        }
+        @media (max-width: 900px) { .sidebar { display: none; } .main-content { margin-left: 0; width: 100%; } }
     </style>
 </head>
 <body>
 
     <div class="sidebar">
         <div class="logo">PIXAROID<br>GAMES</div>
-        <a onclick="showSection('inicio')" class="menu-item">Inicio</a>
-        <a href="https://discord.gg/aAchPaY5" target="_blank" class="menu-item">Discord</a>
+        <a onclick="location.reload()" class="menu-item">Inicio</a>
+        <a onclick="showSection('juegos')" class="menu-item">Descargas</a>
+        <a href="https://discord.gg/aAchPaY5" target="_blank" class="menu-item">
+            <svg viewBox="0 0 127.14 96.36"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.71,32.65-1.82,56.6.48,80.21a105.73,105.73,0,0,0,32.22,16.15,77.7,77.7,0,0,0,7.37-12,67.6,67.6,0,0,1-11.9-5.69c.97-.69,1.93-1.39,2.85-2.12a74.22,74.22,0,0,0,65.3,0c.92.73,1.88,1.43,2.85,2.12a67.4,67.4,0,0,1-11.9,5.69,77.91,77.91,0,0,0,7.37,12,105.52,105.52,0,0,0,32.27-16.15C130.39,52.12,120.73,28.53,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5.09-12.73,11.41-12.73S54,46,53.86,53,48.77,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5.09-12.73,11.44-12.73S96.23,46,96.12,53,91,65.69,84.69,65.69Z"/></svg>
+            Discord
+        </a>
     </div>
 
     <div class="main-content">
         <div class="glass-box" id="seccion-categorias">
-            <h2 style="font-family: 'Press Start 2P'; font-size: 14px; color:#00ff88;">CATEGORÍAS</h2>
+            <h2 style="color: #00ff88; font-family: 'Press Start 2P'; font-size: 14px;">CATEGORÍAS</h2>
             <button onclick="showSection('juegos')" class="cat-btn">JUEGOS</button>
             <button onclick="showSection('programas')" class="cat-btn">PROGRAMAS</button>
+            <button onclick="showSection('so')" class="cat-btn">SISTEMAS OPERATIVOS</button>
         </div>
 
-        <div id="descargas-juegos" style="display:none; width: 90%; max-width: 600px; margin-top: 20px;">
-            <div class="item-list">
-                <span style="font-weight:600;">Five Nights at Freddy's 1</span>
-                <button class="btn-abrir" onclick="openModal('modal1')">Descargar ⚡</button>
-            </div>
-            <div class="item-list">
-                <span style="font-weight:600;">Five Nights at Freddy's 2</span>
-                <button class="btn-abrir" onclick="openModal('modal2')">Descargar ⚡</button>
-            </div>
-            <div class="item-list">
-                <span style="font-weight:600;">Five Nights at Freddy's 3</span>
-                <button class="btn-abrir" onclick="openModal('modal3')">Descargar ⚡</button>
-            </div>
+        <div id="descargas-juegos" class="section-content">
+            <div class="item-list"><span>Five Nights at Freddy's 1</span><button class="btn-abrir" onclick="openModal('modal1')">Descargar ⚡</button></div>
+            <div class="item-list"><span>Five Nights at Freddy's 2</span><button class="btn-abrir" onclick="openModal('modal2')">Descargar ⚡</button></div>
+            <div class="item-list"><span>Five Nights at Freddy's 3</span><button class="btn-abrir" onclick="openModal('modal3')">Descargar ⚡</button></div>
+        </div>
+
+        <div id="descargas-programas" class="section-content">
+            <div class="item-list"><span>Próximamente...</span></div>
+        </div>
+
+        <div id="descargas-so" class="section-content">
+            <div class="item-list"><span>Windows 10 Pro</span><button class="btn-abrir">Link ⚡</button></div>
+            <div class="item-list"><span>Windows 11 Pro</span><button class="btn-abrir">Link ⚡</button></div>
         </div>
     </div>
 
     <div id="modal1" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
-            <h2 style="color: #f1c40f; font-family: 'Press Start 2P'; font-size: 12px;">FNaF 1</h2>
-            <p class="historia-txt">Sobrevive a la primera semana en la pizzería más peligrosa del mundo. Mike Schmidt debe cuidar las puertas y las luces sin quedarse sin energía mientras Freddy y sus amigos se acercan.</p>
-            <div class="requisitos">
-                <h4>Requisitos Mínimos:</h4>
-                <p>• SO: Windows XP, Vista, 7, 8, 10, 11<br>• Procesador: 2 GHz Intel Pentium 4<br>• RAM: 1 GB<br>• Espacio: 250 MB</p>
-            </div>
-            <p style="font-size: 12px; color: #777;">(Baja para ver el enlace)</p>
-            <div style="height: 200px;"></div> 
+            <h3 style="color:#f1c40f">FNaF 1: Historia</h3>
+            <p>Trabaja como guardia en Freddy Fazbear's Pizza. Sobrevive a los animatrónicos usando luces y puertas.</p>
+            <div class="requisitos"><h4>Mínimos:</h4><p>RAM: 1GB | Procesador: 2GHz | Espacio: 250MB</p></div>
+            <div style="height: 150px;"></div>
             <a href="https://vikingfile.com/f/SoljjjXKuG" target="_blank" class="link-descarga">LINK: https://vikingfile.com/f/SoljjjXKuG</a>
         </div>
     </div>
@@ -155,14 +143,10 @@
     <div id="modal2" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
-            <h2 style="color: #f1c40f; font-family: 'Press Start 2P'; font-size: 12px;">FNaF 2</h2>
-            <p class="historia-txt">Más animatrónicos, sin puertas y una máscara de Freddy como única defensa. Mantén la caja de música activa para que la marioneta no salga.</p>
-            <div class="requisitos">
-                <h4>Requisitos Mínimos:</h4>
-                <p>• SO: Windows XP en adelante<br>• Procesador: 2 GHz o superior<br>• RAM: 1 GB<br>• Espacio: 300 MB</p>
-            </div>
-            <p style="font-size: 12px; color: #777;">(Baja para ver el enlace)</p>
-            <div style="height: 200px;"></div>
+            <h3 style="color:#f1c40f">FNaF 2: Historia</h3>
+            <p>Usa la máscara de Freddy para engañar a los animatrónicos y dale cuerda a la caja de música.</p>
+            <div class="requisitos"><h4>Mínimos:</h4><p>RAM: 1GB | Procesador: 2GHz | Espacio: 300MB</p></div>
+            <div style="height: 150px;"></div>
             <a href="https://vikingfile.com/f/s0IDITAnnv" target="_blank" class="link-descarga">LINK: https://vikingfile.com/f/s0IDITAnnv</a>
         </div>
     </div>
@@ -170,33 +154,22 @@
     <div id="modal3" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
-            <h2 style="color: #f1c40f; font-family: 'Press Start 2P'; font-size: 12px;">FNaF 3</h2>
-            <p class="historia-txt">Fazbear's Fright abre sus puertas. Solo hay un animatrónico real: Springtrap. Lucha contra los sistemas que fallan y evita que el asesino entre a tu oficina.</p>
-            <div class="requisitos">
-                <h4>Requisitos Mínimos:</h4>
-                <p>• Procesador: 2 GHz Intel Pentium 4 o equivalente<br>• Gráficos: 1 GB de VRAM<br>• RAM: 2 GB<br>• Espacio: 250 MB</p>
-            </div>
-            <p style="font-size: 12px; color: #777;">(Baja para ver el enlace)</p>
-            <div style="height: 200px;"></div>
+            <h3 style="color:#f1c40f">FNaF 3: Historia</h3>
+            <p>Treinta años después, el asesino vuelve en Springtrap. Evita que llegue a tu oficina reparando los sistemas.</p>
+            <div class="requisitos"><h4>Mínimos:</h4><p>RAM: 2GB | Gráficos: 1GB VRAM | Espacio: 250MB</p></div>
+            <div style="height: 150px;"></div>
             <a href="https://vikingfile.com/f/fdkOjFQq3O" target="_blank" class="link-descarga">LINK: https://vikingfile.com/f/fdkOjFQq3O</a>
         </div>
     </div>
 
     <script>
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(s => s.style.display = 'none');
+            document.getElementById('descargas-' + id).style.display = 'block';
+        }
         function openModal(id) { document.getElementById(id).style.display = "block"; }
         function closeModal(id) { document.getElementById(id).style.display = "none"; }
-        
-        function showSection(sectionId) {
-            if(sectionId === 'juegos') {
-                document.getElementById('descargas-juegos').style.display = 'block';
-            }
-        }
-
-        window.onclick = function(event) {
-            if (event.target.className === 'modal') {
-                event.target.style.display = "none";
-            }
-        }
+        window.onclick = (e) => { if(e.target.className === 'modal') e.target.style.display = 'none'; }
     </script>
 </body>
 </html>
