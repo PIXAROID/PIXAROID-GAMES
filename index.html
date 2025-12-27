@@ -12,8 +12,8 @@
             padding: 0;
             font-family: 'Poppins', sans-serif;
             background-color: #000; 
-            /* AQUÍ ESTÁ TU IMAGEN DE FONDO */
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://storage.googleapis.com/generate-v1-files/image-generation-content/0/image_7f999131-7b0b-4176-b684-554e7f867554.png'); 
+            /* FONDO CON TU IMAGEN DE LA MONTAÑA */
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://raw.githubusercontent.com/eriicsalgueiro-beep/PIXAROID-GAMES-2/main/HD-wallpaper-dark-background-yl-computing-clean-black-thumbnail.jpg'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -28,7 +28,7 @@
             top: 0;
             width: 240px;
             height: 100%;
-            background-color: rgba(10, 10, 10, 0.9);
+            background-color: rgba(10, 10, 10, 0.95);
             padding: 20px;
             box-shadow: 5px 0 15px rgba(0,0,0,0.5);
             z-index: 100;
@@ -67,7 +67,7 @@
         }
 
         .glass-box {
-            background-color: rgba(20, 20, 20, 0.75);
+            background-color: rgba(25, 25, 25, 0.8);
             backdrop-filter: blur(10px);
             border-radius: 12px;
             padding: 40px;
@@ -81,43 +81,36 @@
             margin-bottom: 25px;
         }
 
-        .game-item {
+        .item-list {
             background: rgba(255,255,255,0.05);
             margin-bottom: 12px;
-            padding: 18px;
+            padding: 20px;
             border-radius: 8px;
+            border-left: 4px solid #f1c40f;
         }
 
-        .game-title { font-weight: 600; font-size: 1.1em; }
+        .item-title { font-weight: 600; font-size: 1.2em; display: block; margin-bottom: 15px; }
         
         .download-section {
-            margin-top: 20px;
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            gap: 12px;
         }
 
         .btn {
-            padding: 12px 20px;
+            padding: 10px 18px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
             font-size: 13px;
-            transition: 0.3s;
-            color: white;
-            text-align: center;
-        }
-
-        /* BOTÓN VIKING FILE AMARILLO */
-        .btn-viking {
-            background-color: #f1c40f;
+            transition: 0.2s;
             color: #000;
+            background-color: #f1c40f;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .btn-viking:hover { background-color: #f39c12; }
-
-        .btn-youtube { background-color: #ff0000; }
-        .btn-gofile { background-color: #2196F3; }
+        .btn:hover { transform: scale(1.05); background-color: #f39c12; }
 
         @media (max-width: 900px) {
             .sidebar { display: none; }
@@ -130,35 +123,27 @@
     <div class="sidebar">
         <div class="logo">PIXAROID<br>GAMES</div>
         <a href="#" class="menu-item active">Inicio</a>
-        <a href="#" class="menu-item">Juegos</a>
-        <a href="#" class="menu-item">Programas</a>
+        <a href="#" class="menu-item">Descargas</a>
         <a href="#" class="menu-item">Discord</a>
     </div>
 
     <div class="main-content">
         <div class="glass-box">
-            <h2>JUEGOS DESTACADOS</h2>
+            <h2>DESCARGAS DISPONIBLES</h2>
             
-            <div class="game-item">
-                <span class="game-title">Grand Theft Auto V RIP V1.4 (12GB)</span>
+            <div class="item-list">
+                <span class="item-title">Schedule 1</span>
                 
                 <div class="download-section">
-                    <a href="LINK_DE_TU_ISO" class="btn btn-viking">Viking File ⚡</a>
-                    
-                    <a href="https://www.youtube.com/" target="_blank" class="btn btn-youtube">Schedule 1 (YouTube)</a>
-                    
-                    <a href="#" class="btn btn-gofile">GoFile</a>
+                    <a href="https://vikingfile.com/f/cnPA9V5J6c#Schedule.I.Pixaroid.zip" target="_blank" class="btn">
+                        Viking File ⚡
+                    </a>
                 </div>
             </div>
 
-            <div class="game-item">
-                <span class="game-title">Minecraft OptiPack</span>
-                <div class="download-section">
-                    <a href="#" class="btn btn-viking">Viking File ⚡</a>
-                </div>
-            </div>
         </div>
     </div>
 
 </body>
 </html>
+
