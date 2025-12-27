@@ -11,27 +11,35 @@
         body {
             margin: 0; padding: 0;
             font-family: 'Poppins', sans-serif;
-            background-color: #0a0a0a; 
-            background-image: url('https://raw.githubusercontent.com/eriicsalgueiro-beep/PIXAROID-GAMES-2/main/HD-wallpaper-dark-background-yl-computing-clean-black-thumbnail.jpg'); 
-            background-size: cover; background-position: center; background-attachment: fixed;
+            background-color: #000; /* Fondo de seguridad negro */
             color: white; display: flex; min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* ANIMACIONES DEFINIDAS */
+        /* VIDEO DE FONDO */
+        #bg-video {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: blur(8px) brightness(0.4); /* Blur y un poco más oscuro para que resalte el texto */
+        }
+
+        /* ANIMACIONES */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .animar-entrada {
-            animation: fadeInUp 0.5s ease forwards;
-        }
+        .animar-entrada { animation: fadeInUp 0.5s ease forwards; }
 
         /* BARRA LATERAL */
         .sidebar {
             position: fixed; left: 0; top: 0; width: 240px; height: 100%;
-            background-color: #0f0f0f; padding: 20px;
+            background-color: rgba(15, 15, 15, 0.9); padding: 20px;
             box-shadow: 5px 0 15px rgba(0,0,0,0.8); z-index: 100;
+            backdrop-filter: blur(10px);
         }
         .logo {
             font-family: 'Press Start 2P', cursive; font-size: 14px;
@@ -41,7 +49,7 @@
             display: flex; align-items: center; gap: 12px; padding: 12px 15px;
             color: #ffffff; text-decoration: none; border-radius: 5px;
             margin-bottom: 8px; font-size: 14px; transition: all 0.3s ease;
-            background: rgba(255,255,255,0.1); cursor: pointer;
+            background: rgba(255,255,255,0.05); cursor: pointer;
         }
         .menu-item svg { width: 20px; height: 20px; fill: #5865F2; }
         .menu-item:hover { background-color: #00ff88; color: #000; transform: translateX(5px); }
@@ -51,50 +59,50 @@
             margin-left: 240px; width: calc(100% - 240px);
             display: flex; flex-direction: column; align-items: center;
             justify-content: center; min-height: 100vh;
+            position: relative; z-index: 1;
         }
 
         .glass-box {
-            background-color: rgba(20, 20, 20, 0.9); border-radius: 12px;
-            padding: 40px; border: 1px solid #333; width: 90%; max-width: 600px;
-            text-align: center; margin-bottom: 20px;
+            background-color: rgba(20, 20, 20, 0.7); border-radius: 12px;
+            padding: 40px; border: 1px solid rgba(255,255,255,0.1); 
+            width: 90%; max-width: 600px; text-align: center;
+            backdrop-filter: blur(5px);
         }
 
-        /* BOTONES CATEGORIAS CON ANIMACIÓN DE CLICK */
+        /* BOTONES */
         .cat-btn {
-            width: 100%; padding: 15px; background: #222; border: 2px solid #444;
+            width: 100%; padding: 15px; background: rgba(34, 34, 34, 0.8); border: 1px solid #444;
             color: white; border-radius: 8px; cursor: pointer; margin-bottom: 12px;
             font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600;
-            transition: all 0.2s ease; outline: none;
+            transition: all 0.2s ease;
         }
         .cat-btn:hover { background: #f1c40f; color: #000; border-color: #f1c40f; transform: scale(1.02); }
-        .cat-btn:active { transform: scale(0.95); } /* Efecto de pulsación */
+        .cat-btn:active { transform: scale(0.95); }
 
-        /* LISTA DE ITEMS */
-        .section-content { display: none; width: 90%; max-width: 600px; }
+        .section-content { display: none; width: 90%; max-width: 600px; margin-top: 20px; }
         .item-list {
-            background: #1a1a1a; margin-bottom: 15px; padding: 20px;
+            background: rgba(26, 26, 26, 0.8); margin-bottom: 15px; padding: 20px;
             border-radius: 8px; border-left: 5px solid #f1c40f;
             display: flex; justify-content: space-between; align-items: center;
-            transition: 0.3s;
+            backdrop-filter: blur(5px);
         }
-        .item-list:hover { background: #252525; }
 
         .btn-abrir {
             padding: 10px 20px; border-radius: 5px; font-weight: bold; 
             color: #000; background-color: #f1c40f; cursor: pointer; border: none;
             text-decoration: none; font-size: 14px; transition: 0.3s;
         }
-        .btn-abrir:hover { background-color: #00ff88; transform: translateY(-2px); }
+        .btn-abrir:hover { background-color: #00ff88; }
 
         /* MODALES */
         .modal {
             display: none; position: fixed; z-index: 1000; left: 0; top: 0;
-            width: 100%; height: 100%; background-color: rgba(0,0,0,0.95);
-            backdrop-filter: blur(5px);
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
         }
         .modal-content {
-            background-color: #1a1a1a; margin: 5% auto; padding: 30px;
-            border: 2px solid #f1c40f; width: 80%; max-width: 500px;
+            background-color: rgba(26, 26, 26, 0.95); margin: 5% auto; padding: 30px;
+            border: 1px solid #f1c40f; width: 80%; max-width: 500px;
             border-radius: 15px; position: relative; max-height: 80vh;
             overflow-y: auto; text-align: left;
             animation: fadeInUp 0.4s ease;
@@ -104,14 +112,18 @@
         .link-descarga {
             display: block; width: 100%; text-align: center; background: #00ff88; 
             color: #000; padding: 15px; text-decoration: none; font-weight: bold; 
-            border-radius: 8px; margin-top: 50px; transition: 0.3s;
+            border-radius: 8px; margin-top: 50px;
         }
-        .link-descarga:hover { filter: brightness(1.2); }
 
         @media (max-width: 900px) { .sidebar { display: none; } .main-content { margin-left: 0; width: 100%; } }
     </style>
 </head>
 <body>
+
+    <video autoplay muted loop id="bg-video">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-dramatic-dark-ocean-waves-under-a-grey-sky-4247-large.mp4" type="video/mp4">
+        Tu navegador no soporta videos.
+    </video>
 
     <div class="sidebar">
         <div class="logo">PIXAROID<br>GAMES</div>
@@ -142,14 +154,8 @@
         </div>
 
         <div id="descargas-so" class="section-content">
-            <div class="item-list">
-                <span>Windows 10 Pro</span>
-                <a href="https://www.microsoft.com/es-es/software-download/windows10" target="_blank" class="btn-abrir">Ir a Microsoft ⚡</a>
-            </div>
-            <div class="item-list">
-                <span>Windows 11 Pro</span>
-                <a href="https://www.microsoft.com/es-es/software-download/windows11" target="_blank" class="btn-abrir">Ir a Microsoft ⚡</a>
-            </div>
+            <div class="item-list"><span>Windows 10 Pro</span><a href="https://www.microsoft.com/es-es/software-download/windows10" target="_blank" class="btn-abrir">Ir a Microsoft ⚡</a></div>
+            <div class="item-list"><span>Windows 11 Pro</span><a href="https://www.microsoft.com/es-es/software-download/windows11" target="_blank" class="btn-abrir">Ir a Microsoft ⚡</a></div>
         </div>
     </div>
 
@@ -188,22 +194,13 @@
 
     <script>
         function showSection(id) {
-            // Ocultar todas las secciones primero
             const sections = document.querySelectorAll('.section-content');
-            sections.forEach(s => {
-                s.style.display = 'none';
-                s.classList.remove('animar-entrada');
-            });
-
-            // Mostrar la sección elegida con animación
+            sections.forEach(s => { s.style.display = 'none'; s.classList.remove('animar-entrada'); });
             const activeSection = document.getElementById('descargas-' + id);
             activeSection.style.display = 'block';
-            
-            // Forzar reinicio de animación
             void activeSection.offsetWidth; 
             activeSection.classList.add('animar-entrada');
         }
-
         function openModal(id) { document.getElementById(id).style.display = "block"; }
         function closeModal(id) { document.getElementById(id).style.display = "none"; }
         window.onclick = (e) => { if(e.target.className === 'modal') e.target.style.display = 'none'; }
