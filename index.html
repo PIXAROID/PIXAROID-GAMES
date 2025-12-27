@@ -17,6 +17,16 @@
             color: white; display: flex; min-height: 100vh;
         }
 
+        /* ANIMACIONES DEFINIDAS */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animar-entrada {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
         /* BARRA LATERAL */
         .sidebar {
             position: fixed; left: 0; top: 0; width: 240px; height: 100%;
@@ -30,11 +40,11 @@
         .menu-item {
             display: flex; align-items: center; gap: 12px; padding: 12px 15px;
             color: #ffffff; text-decoration: none; border-radius: 5px;
-            margin-bottom: 8px; font-size: 14px; transition: 0.3s;
+            margin-bottom: 8px; font-size: 14px; transition: all 0.3s ease;
             background: rgba(255,255,255,0.1); cursor: pointer;
         }
         .menu-item svg { width: 20px; height: 20px; fill: #5865F2; }
-        .menu-item:hover { background-color: #00ff88; color: #000; }
+        .menu-item:hover { background-color: #00ff88; color: #000; transform: translateX(5px); }
 
         /* CONTENIDO PRINCIPAL */
         .main-content {
@@ -49,13 +59,15 @@
             text-align: center; margin-bottom: 20px;
         }
 
-        /* BOTONES CATEGORIAS */
+        /* BOTONES CATEGORIAS CON ANIMACIÓN DE CLICK */
         .cat-btn {
             width: 100%; padding: 15px; background: #222; border: 2px solid #444;
             color: white; border-radius: 8px; cursor: pointer; margin-bottom: 12px;
             font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600;
+            transition: all 0.2s ease; outline: none;
         }
-        .cat-btn:hover { background: #f1c40f; color: #000; border-color: #f1c40f; }
+        .cat-btn:hover { background: #f1c40f; color: #000; border-color: #f1c40f; transform: scale(1.02); }
+        .cat-btn:active { transform: scale(0.95); } /* Efecto de pulsación */
 
         /* LISTA DE ITEMS */
         .section-content { display: none; width: 90%; max-width: 600px; }
@@ -63,14 +75,16 @@
             background: #1a1a1a; margin-bottom: 15px; padding: 20px;
             border-radius: 8px; border-left: 5px solid #f1c40f;
             display: flex; justify-content: space-between; align-items: center;
+            transition: 0.3s;
         }
+        .item-list:hover { background: #252525; }
 
         .btn-abrir {
             padding: 10px 20px; border-radius: 5px; font-weight: bold; 
             color: #000; background-color: #f1c40f; cursor: pointer; border: none;
-            text-decoration: none; font-size: 14px;
+            text-decoration: none; font-size: 14px; transition: 0.3s;
         }
-        .btn-abrir:hover { background-color: #00ff88; }
+        .btn-abrir:hover { background-color: #00ff88; transform: translateY(-2px); }
 
         /* MODALES */
         .modal {
@@ -83,14 +97,16 @@
             border: 2px solid #f1c40f; width: 80%; max-width: 500px;
             border-radius: 15px; position: relative; max-height: 80vh;
             overflow-y: auto; text-align: left;
+            animation: fadeInUp 0.4s ease;
         }
         .close-btn { position: sticky; top: 0; float: right; font-size: 30px; color: #ff4444; cursor: pointer; }
         .requisitos { background: rgba(0,255,136,0.1); padding: 15px; border-radius: 8px; border-left: 3px solid #00ff88; margin: 20px 0; }
         .link-descarga {
             display: block; width: 100%; text-align: center; background: #00ff88; 
             color: #000; padding: 15px; text-decoration: none; font-weight: bold; 
-            border-radius: 8px; margin-top: 50px;
+            border-radius: 8px; margin-top: 50px; transition: 0.3s;
         }
+        .link-descarga:hover { filter: brightness(1.2); }
 
         @media (max-width: 900px) { .sidebar { display: none; } .main-content { margin-left: 0; width: 100%; } }
     </style>
@@ -108,7 +124,7 @@
     </div>
 
     <div class="main-content">
-        <div class="glass-box" id="seccion-categorias">
+        <div class="glass-box animar-entrada" id="seccion-categorias">
             <h2 style="color: #00ff88; font-family: 'Press Start 2P'; font-size: 14px;">CATEGORÍAS</h2>
             <button onclick="showSection('juegos')" class="cat-btn">JUEGOS</button>
             <button onclick="showSection('programas')" class="cat-btn">PROGRAMAS</button>
@@ -141,8 +157,8 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
             <h3 style="color:#f1c40f">FNaF 1: Historia</h3>
-            <p>Trabaja como guardia en Freddy Fazbear's Pizza. Sobrevive a los animatrónicos usando luces y puertas.</p>
-            <div class="requisitos"><h4>Mínimos:</h4><p>RAM: 1GB | Procesador: 2GHz | Espacio: 250MB</p></div>
+            <p>Sobrevive a Freddy y su banda en la pizzería original.</p>
+            <div class="requisitos"><h4>Mínimos:</h4><p>RAM: 1GB | Espacio: 250MB</p></div>
             <div style="height: 150px;"></div>
             <a href="https://vikingfile.com/f/SoljjjXKuG" target="_blank" class="link-descarga">LINK: https://vikingfile.com/f/SoljjjXKuG</a>
         </div>
@@ -152,8 +168,8 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
             <h3 style="color:#f1c40f">FNaF 2: Historia</h3>
-            <p>Usa la máscara de Freddy para engañar a los animatrónicos y dale cuerda a la caja de música.</p>
-            <div class="requisitos"><h4>Mínimos:</h4><p>RAM: 1GB | Procesador: 2GHz | Espacio: 300MB</p></div>
+            <p>Usa la máscara para sobrevivir a los nuevos modelos Toy.</p>
+            <div class="requisitos"><h4>Mínimos:</h4><p>RAM: 1GB | Espacio: 300MB</p></div>
             <div style="height: 150px;"></div>
             <a href="https://vikingfile.com/f/s0IDITAnnv" target="_blank" class="link-descarga">LINK: https://vikingfile.com/f/s0IDITAnnv</a>
         </div>
@@ -163,8 +179,8 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
             <h3 style="color:#f1c40f">FNaF 3: Historia</h3>
-            <p>Treinta años después, Springtrap vuelve. Evita que llegue a tu oficina reparando los sistemas.</p>
-            <div class="requisitos"><h4>Mínimos:</h4><p>RAM: 2GB | Gráficos: 1GB VRAM | Espacio: 250MB</p></div>
+            <p>Springtrap te busca en la atracción de terror Fazbear's Fright.</p>
+            <div class="requisitos"><h4>Mínimos:</h4><p>RAM: 2GB | Espacio: 250MB</p></div>
             <div style="height: 150px;"></div>
             <a href="https://vikingfile.com/f/fdkOjFQq3O" target="_blank" class="link-descarga">LINK: https://vikingfile.com/f/fdkOjFQq3O</a>
         </div>
@@ -172,9 +188,22 @@
 
     <script>
         function showSection(id) {
-            document.querySelectorAll('.section-content').forEach(s => s.style.display = 'none');
-            document.getElementById('descargas-' + id).style.display = 'block';
+            // Ocultar todas las secciones primero
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(s => {
+                s.style.display = 'none';
+                s.classList.remove('animar-entrada');
+            });
+
+            // Mostrar la sección elegida con animación
+            const activeSection = document.getElementById('descargas-' + id);
+            activeSection.style.display = 'block';
+            
+            // Forzar reinicio de animación
+            void activeSection.offsetWidth; 
+            activeSection.classList.add('animar-entrada');
         }
+
         function openModal(id) { document.getElementById(id).style.display = "block"; }
         function closeModal(id) { document.getElementById(id).style.display = "none"; }
         window.onclick = (e) => { if(e.target.className === 'modal') e.target.style.display = 'none'; }
