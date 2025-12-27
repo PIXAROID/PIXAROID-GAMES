@@ -69,7 +69,6 @@
             padding: 12px 15px; background-color: #00ff88; color: #000;
             border-radius: 5px; border: none; font-weight: bold;
             font-size: 14px; margin-top: 20px; transition: 0.3s; cursor: pointer;
-            font-family: 'Poppins', sans-serif;
         }
         .donate-btn:hover { background-color: #f1c40f; transform: scale(1.02); }
 
@@ -114,23 +113,27 @@
 
         .btn-abrir { padding: 10px 18px; border-radius: 6px; font-weight: bold; color: #000; background-color: #f1c40f; cursor: pointer; border: none; }
 
-        /* MODALES */
+        /* MODALES ACTUALIZADOS */
         .modal {
-            display: none; 
-            position: fixed; z-index: 1000; left: 0; top: 0;
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
             width: 100%; height: 100%; background-color: rgba(0,0,0,0.85);
-            backdrop-filter: blur(15px);
-            align-items: center; justify-content: center;
+            backdrop-filter: blur(15px); align-items: center; justify-content: center;
         }
         .modal-content {
-            background-color: rgba(20, 20, 20, 0.95); padding: 30px; border: 1px solid #f1c40f;
-            width: 90%; max-width: 500px; border-radius: 20px; text-align: center; position: relative;
+            background-color: rgba(20, 20, 20, 0.95); padding: 35px; border: 1px solid #f1c40f;
+            width: 90%; max-width: 550px; border-radius: 20px; text-align: center; position: relative;
         }
         .close-btn { position: absolute; right: 20px; top: 10px; font-size: 30px; color: #ff4444; cursor: pointer; }
-        .link-descarga {
-            display: block; width: 100%; text-align: center; background: #00ff88; 
-            color: #000; padding: 15px; text-decoration: none; font-weight: bold; border-radius: 10px; margin-top: 30px;
+        
+        /* ESTILO DEL TEXTO DEL LINK */
+        .direct-link-box {
+            margin-top: 25px; padding: 15px; background: rgba(255,255,255,0.05);
+            border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);
+            word-break: break-all; text-align: left;
         }
+        .direct-link-box label { display: block; color: #f1c40f; font-weight: bold; font-size: 13px; margin-bottom: 5px; }
+        .direct-link-box a { color: #00ff88; text-decoration: none; font-size: 14px; transition: 0.3s; }
+        .direct-link-box a:hover { text-decoration: underline; color: #ffffff; }
 
         @media (max-width: 900px) { .sidebar { display: none; } .main-content { margin-left: 0; width: 100%; } }
     </style>
@@ -148,9 +151,7 @@
         <a onclick="location.reload()" class="menu-item">Inicio</a>
         <a onclick="showSection('juegos')" class="menu-item">Descargas</a>
         <a href="https://discord.gg/aAchPaY5" target="_blank" class="menu-item">Discord</a>
-        
         <button class="donate-btn" onclick="openModal('modal-donar')">$ DONAR</button>
-        
         <div class="info-seguridad">Todos los juegos o la mayoria estan escaneados con antivirus diferentes y estan crackeados desde steam.</div>
     </div>
 
@@ -164,33 +165,71 @@
         </div>
 
         <div id="descargas-juegos" class="section-content">
-            <div class="item-list"><span>Five Nights at Freddy's 1</span><button class="btn-abrir" onclick="openModal('modal1')">Descargar ⚡</button></div>
-            <div class="item-list"><span>Five Nights at Freddy's 2</span><button class="btn-abrir" onclick="openModal('modal2')">Descargar ⚡</button></div>
-            <div class="item-list"><span>Five Nights at Freddy's 3</span><button class="btn-abrir" onclick="openModal('modal3')">Descargar ⚡</button></div>
+            <div class="item-list"><span>Five Nights at Freddy's 1</span><button class="btn-abrir" onclick="openModal('modal1')">Ver Link ⚡</button></div>
+            <div class="item-list"><span>Five Nights at Freddy's 2</span><button class="btn-abrir" onclick="openModal('modal2')">Ver Link ⚡</button></div>
+            <div class="item-list"><span>Five Nights at Freddy's 3</span><button class="btn-abrir" onclick="openModal('modal3')">Ver Link ⚡</button></div>
         </div>
+
         <div id="descargas-programas" class="section-content"><div class="item-list"><span>Próximamente...</span></div></div>
+        
         <div id="descargas-so" class="section-content">
-            <div class="item-list"><span>Windows 10 Pro</span><a href="https://www.microsoft.com/es-es/software-download/windows10" target="_blank" class="btn-abrir">Ir ⚡</a></div>
+            <div class="item-list"><span>Windows 10 Pro</span><button class="btn-abrir" onclick="openModal('modal-w10')">Ver Link ⚡</button></div>
         </div>
     </div>
 
-    <div id="modal1" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal1')">&times;</span><h3>FNaF 1</h3><a href="https://vikingfile.com/f/SoljjjXKuG" target="_blank" class="link-descarga">DESCARGAR</a></div></div>
-    <div id="modal2" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal2')">&times;</span><h3>FNaF 2</h3><a href="https://vikingfile.com/f/s0IDITAnnv" target="_blank" class="link-descarga">DESCARGAR</a></div></div>
-    <div id="modal3" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal3')">&times;</span><h3>FNaF 3</h3><a href="https://vikingfile.com/f/fdkOjFQq3O" target="_blank" class="link-descarga">DESCARGAR</a></div></div>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
+            <h3 style="font-family:'Press Start 2P'; font-size:14px;">FNaF 1</h3>
+            <div class="direct-link-box">
+                <label>Link directo:</label>
+                <a href="https://vikingfile.com/f/SoljjjXKuG" target="_blank">https://vikingfile.com/f/SoljjjXKuG</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
+            <h3 style="font-family:'Press Start 2P'; font-size:14px;">FNaF 2</h3>
+            <div class="direct-link-box">
+                <label>Link directo:</label>
+                <a href="https://vikingfile.com/f/s0IDITAnnv" target="_blank">https://vikingfile.com/f/s0IDITAnnv</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
+            <h3 style="font-family:'Press Start 2P'; font-size:14px;">FNaF 3</h3>
+            <div class="direct-link-box">
+                <label>Link directo:</label>
+                <a href="https://vikingfile.com/f/fdkOjFQq3O" target="_blank">https://vikingfile.com/f/fdkOjFQq3O</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-w10" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-w10')">&times;</span>
+            <h3 style="font-family:'Press Start 2P'; font-size:14px;">Windows 10</h3>
+            <div class="direct-link-box">
+                <label>Link directo:</label>
+                <a href="https://www.microsoft.com/es-es/software-download/windows10" target="_blank">https://www.microsoft.com/es-es/software-download/windows10</a>
+            </div>
+        </div>
+    </div>
     
     <div id="modal-donar" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-donar')">&times;</span>
             <h3 style="color:#00ff88; font-family:'Press Start 2P'; font-size:14px; margin-top:10px;">APOYAR PROYECTO</h3>
-            
             <div style="background:rgba(255,255,255,0.1); padding:20px; border-radius:15px; margin:25px 0; border:1px dashed #00ff88;">
-                <span style="font-size:11px; color:#aaa; letter-spacing:1px;">MERCADO PAGO (Alias)</span><br>
+                <span style="font-size:11px; color:#aaa;">MERCADO PAGO (Alias)</span><br>
                 <strong style="font-size:20px; color:#fff; display:block; margin-top:5px;">eric.salgueiro</strong>
             </div>
-
-            <p style="font-size: 13px; color: #00ff88; font-weight: 500; line-height: 1.4;">
-                ¡Tu donación ayuda a que traigamos más juegos!
-            </p>
+            <p style="font-size: 13px; color: #00ff88; font-weight: 500;">¡Tu donación ayuda a que traigamos más juegos!</p>
         </div>
     </div>
 
@@ -202,11 +241,7 @@
         }
         function openModal(id) { document.getElementById(id).style.display = "flex"; }
         function closeModal(id) { document.getElementById(id).style.display = "none"; }
-        
-        window.onclick = (e) => { 
-            if(e.target.classList.contains('modal')) e.target.style.display = 'none'; 
-        }
-
+        window.onclick = (e) => { if(e.target.className === 'modal') e.target.style.display = 'none'; }
         function searchItems() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let items = document.querySelectorAll('.item-list');
