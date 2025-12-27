@@ -155,14 +155,14 @@
 
         .item-list {
             background: #1a1a1a;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             padding: 20px;
             border-radius: 8px;
             border-left: 4px solid #f1c40f;
             text-align: left;
         }
 
-        .item-title { font-weight: 600; font-size: 1.2em; display: block; margin-bottom: 15px; }
+        .item-title { font-weight: 600; font-size: 1.2em; display: block; margin-bottom: 10px; }
         
         .btn {
             padding: 10px 18px;
@@ -212,9 +212,25 @@
         <div class="download-section-content" id="descargas-juegos">
             <div class="glass-box">
                 <h2>JUEGOS DISPONIBLES</h2>
+                
                 <div class="item-list searchable">
                     <span class="item-title">Schedule 1</span>
                     <a href="https://vikingfile.com/f/cnPA9V5J6c#Schedule.I.Pixaroid.zip" target="_blank" class="btn">Viking File ⚡</a>
+                </div>
+
+                <div class="item-list searchable">
+                    <span class="item-title">Five Nights at Freddy's 1</span>
+                    <a href="https://vikingfile.com/f/SoljjjXKuG" target="_blank" class="btn">Viking File ⚡</a>
+                </div>
+
+                <div class="item-list searchable">
+                    <span class="item-title">Five Nights at Freddy's 2</span>
+                    <a href="https://vikingfile.com/f/s0IDITAnnv" target="_blank" class="btn">Viking File ⚡</a>
+                </div>
+
+                <div class="item-list searchable">
+                    <span class="item-title">Five Nights at Freddy's 3</span>
+                    <a href="https://vikingfile.com/f/fdkOjFQq3O" target="_blank" class="btn">Viking File ⚡</a>
                 </div>
             </div>
         </div>
@@ -222,20 +238,14 @@
         <div class="download-section-content" id="descargas-programas">
             <div class="glass-box">
                 <h2>PROGRAMAS DISPONIBLES</h2>
-                <div class="item-list searchable">
-                    <span class="item-title">Adobe Photoshop</span>
-                    <p>Próximamente...</p>
-                </div>
+                <p>Próximamente...</p>
             </div>
         </div>
 
         <div class="download-section-content" id="descargas-so">
             <div class="glass-box">
                 <h2>SISTEMAS OPERATIVOS</h2>
-                <div class="item-list searchable">
-                    <span class="item-title">Windows 10 Pro</span>
-                    <p>Próximamente...</p>
-                </div>
+                <p>Próximamente...</p>
             </div>
         </div>
     </div>
@@ -244,39 +254,33 @@
         function showSection(sectionId) {
             const sections = document.querySelectorAll('.download-section-content');
             sections.forEach(s => s.style.display = 'none');
-            
             const catBox = document.getElementById('seccion-categorias');
-            
             if (sectionId === 'inicio') {
                 catBox.style.display = 'block';
-                document.getElementById('gameSearch').value = ''; // Limpiar buscador
+                document.getElementById('gameSearch').value = '';
                 filterContent(); 
             } else {
                 document.getElementById('descargas-' + sectionId).style.display = 'block';
             }
         }
 
-        // FUNCIÓN DEL BUSCADOR
         function filterContent() {
             let input = document.getElementById('gameSearch').value.toLowerCase();
             let items = document.querySelectorAll('.searchable');
             let sections = document.querySelectorAll('.download-section-content');
             let catBox = document.getElementById('seccion-categorias');
-
             if (input.length > 0) {
-                catBox.style.display = 'none'; // Oculta categorías al buscar
-                sections.forEach(s => s.style.display = 'block'); // Muestra secciones para ver resultados
-            } else {
+                catBox.style.display = 'none';
+                sections.forEach(s => s.style.display = 'block');
+            } else if (input.length === 0) {
                 catBox.style.display = 'block';
                 sections.forEach(s => s.style.display = 'none');
             }
-
             items.forEach(item => {
                 let text = item.innerText.toLowerCase();
                 item.style.display = text.includes(input) ? "block" : "none";
             });
         }
     </script>
-
 </body>
 </html>
