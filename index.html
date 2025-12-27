@@ -31,9 +31,9 @@
             display: flex; align-items: center; gap: 12px; padding: 12px 15px;
             color: #ffffff; text-decoration: none; border-radius: 5px;
             margin-bottom: 8px; font-size: 14px; transition: 0.3s;
-            background: rgba(255,255,255,0.05); cursor: pointer;
+            background: rgba(255,255,255,0.1); cursor: pointer;
         }
-        .menu-item svg { width: 20px; fill: #5865F2; }
+        .menu-item svg { width: 20px; height: 20px; fill: #5865F2; }
         .menu-item:hover { background-color: #00ff88; color: #000; }
 
         /* CONTENIDO PRINCIPAL */
@@ -57,35 +57,31 @@
 
         h2 { font-family: 'Press Start 2P', cursive; font-size: 16px; color: #00ff88; margin-bottom: 25px; }
 
-        /* DISEÑO DE LOS ITEMS */
+        /* BOTONES CATEGORIAS CORREGIDOS */
+        .cat-btn {
+            width: 100%; padding: 15px; background: #222;
+            border: 2px solid #444; color: white; font-weight: 600;
+            border-radius: 8px; transition: 0.3s; cursor: pointer; margin-bottom: 12px;
+            font-family: 'Poppins', sans-serif; font-size: 16px;
+        }
+        .cat-btn:hover { background: #f1c40f; color: #000; border-color: #f1c40f; }
+
+        /* LISTA DE ITEMS */
         .download-section-content { display: none; width: 80%; max-width: 700px; }
-        
         .item-list {
-            background: #1a1a1a; margin-bottom: 15px; padding: 15px;
-            border-radius: 8px; border-left: 4px solid #f1c40f;
-            display: flex; align-items: center; gap: 20px; text-align: left;
+            background: #1a1a1a; margin-bottom: 15px; padding: 20px;
+            border-radius: 8px; border-left: 5px solid #f1c40f;
+            display: flex; justify-content: space-between; align-items: center; text-align: left;
         }
 
-        /* LAS IMÁGENES */
-        .game-img {
-            width: 100px; 
-            height: 100px; 
-            border-radius: 8px;
-            object-fit: cover; 
-            display: block; /* Asegura que se vea */
-            border: 2px solid #444;
-        }
-
-        .game-info { flex-grow: 1; }
-        .item-title { font-weight: 600; font-size: 1.1em; display: block; margin-bottom: 10px; color: #f1c40f; }
+        .item-title { font-weight: 600; font-size: 1.2em; color: #fff; }
 
         .btn {
-            padding: 8px 15px; border-radius: 5px; text-decoration: none;
-            font-weight: bold; font-size: 12px; color: #000;
+            padding: 10px 20px; border-radius: 5px; text-decoration: none;
+            font-weight: bold; font-size: 14px; color: #000;
             background-color: #f1c40f; transition: 0.2s;
-            display: inline-block;
         }
-        .btn:hover { background-color: #fff; }
+        .btn:hover { background-color: #fff; transform: scale(1.05); }
 
         @media (max-width: 900px) {
             .sidebar { display: none; }
@@ -107,14 +103,14 @@
 
     <div class="main-content">
         <div class="search-container">
-            <input type="text" id="gameSearch" placeholder="🔍 Buscar..." onkeyup="filterContent()">
+            <input type="text" id="gameSearch" placeholder="🔍 Buscar juegos, programas..." onkeyup="filterContent()">
         </div>
         
         <div class="glass-box" id="seccion-categorias">
             <h2>CATEGORÍAS</h2>
-            <button onclick="showSection('juegos')" style="width:100%; padding:15px; margin-bottom:10px; cursor:pointer;">JUEGOS</button>
-            <button onclick="showSection('programas')" style="width:100%; padding:15px; margin-bottom:10px; cursor:pointer;">PROGRAMAS</button>
-            <button onclick="showSection('so')" style="width:100%; padding:15px; margin-bottom:10px; cursor:pointer;">SISTEMAS OPERATIVOS</button>
+            <button onclick="showSection('juegos')" class="cat-btn">JUEGOS</button>
+            <button onclick="showSection('programas')" class="cat-btn">PROGRAMAS</button>
+            <button onclick="showSection('so')" class="cat-btn">SISTEMAS OPERATIVOS</button>
         </div>
 
         <div class="download-section-content" id="descargas-juegos">
@@ -122,38 +118,34 @@
                 <h2>JUEGOS DISPONIBLES</h2>
 
                 <div class="item-list searchable">
-                    <img src="https://m.media-amazon.com/images/I/9103zPOn7kL.png" class="game-img">
-                    <div class="game-info">
-                        <span class="item-title">Five Nights at Freddy's 1</span>
-                        <a href="https://vikingfile.com/f/SoljjjXKuG" target="_blank" class="btn">Descargar ⚡</a>
-                    </div>
+                    <span class="item-title">Five Nights at Freddy's 1</span>
+                    <a href="https://vikingfile.com/f/SoljjjXKuG" target="_blank" class="btn">Descargar ⚡</a>
                 </div>
 
                 <div class="item-list searchable">
-                    <img src="https://m.media-amazon.com/images/I/91W0-K82WTL.png" class="game-img">
-                    <div class="game-info">
-                        <span class="item-title">Five Nights at Freddy's 2</span>
-                        <a href="https://vikingfile.com/f/s0IDITAnnv" target="_blank" class="btn">Descargar ⚡</a>
-                    </div>
+                    <span class="item-title">Five Nights at Freddy's 2</span>
+                    <a href="https://vikingfile.com/f/s0IDITAnnv" target="_blank" class="btn">Descargar ⚡</a>
                 </div>
 
                 <div class="item-list searchable">
-                    <img src="https://m.media-amazon.com/images/I/91YI9D6A-0L.png" class="game-img">
-                    <div class="game-info">
-                        <span class="item-title">Five Nights at Freddy's 3</span>
-                        <a href="https://vikingfile.com/f/fdkOjFQq3O" target="_blank" class="btn">Descargar ⚡</a>
-                    </div>
+                    <span class="item-title">Five Nights at Freddy's 3</span>
+                    <a href="https://vikingfile.com/f/fdkOjFQq3O" target="_blank" class="btn">Descargar ⚡</a>
                 </div>
-
             </div>
         </div>
 
         <div class="download-section-content" id="descargas-programas">
-            <div class="glass-box"><h2>PROGRAMAS</h2><p>Próximamente...</p></div>
+            <div class="glass-box">
+                <h2>PROGRAMAS</h2>
+                <p>Próximamente...</p>
+            </div>
         </div>
 
         <div class="download-section-content" id="descargas-so">
-            <div class="glass-box"><h2>SISTEMAS OPERATIVOS</h2><p>Próximamente...</p></div>
+            <div class="glass-box">
+                <h2>SISTEMAS OPERATIVOS</h2>
+                <p>Próximamente...</p>
+            </div>
         </div>
     </div>
 
@@ -162,8 +154,11 @@
             const sections = document.querySelectorAll('.download-section-content');
             sections.forEach(s => s.style.display = 'none');
             const catBox = document.getElementById('seccion-categorias');
+            
             if (sectionId === 'inicio') {
                 catBox.style.display = 'block';
+                document.getElementById('gameSearch').value = '';
+                filterContent();
             } else {
                 catBox.style.display = 'block';
                 document.getElementById('descargas-' + sectionId).style.display = 'block';
@@ -175,6 +170,7 @@
             let items = document.querySelectorAll('.searchable');
             let sections = document.querySelectorAll('.download-section-content');
             let catBox = document.getElementById('seccion-categorias');
+            
             if (input.length > 0) {
                 catBox.style.display = 'none';
                 sections.forEach(s => s.style.display = 'block');
