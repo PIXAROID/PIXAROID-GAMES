@@ -65,7 +65,7 @@
             display: flex; align-items: center; gap: 20px; text-align: left;
         }
 
-        /* AJUSTE DE LA FOTO */
+        /* AJUSTE DE LAS FOTOS */
         .game-img {
             width: 90px; height: 90px; border-radius: 8px;
             object-fit: cover; border: 2px solid #333;
@@ -119,4 +119,56 @@
                 </div>
 
                 <div class="item-list searchable">
-                    <div style="width:90px; height:90px; background:#333; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:10px;">FOTO 2
+                    <img src="https://static.wikia.nocookie.net/fivenightsatfreddys/images/b/b3/480px-Five_Nights_at_Freddy%27s_2_icon.jpg/revision/latest?cb=20141102170003" class="game-img" alt="FNAF 2">
+                    <div class="game-info">
+                        <span class="item-title">Five Nights at Freddy's 2</span>
+                        <a href="https://vikingfile.com/f/s0IDITAnnv" target="_blank" class="btn">Descargar ⚡</a>
+                    </div>
+                </div>
+
+                <div class="item-list searchable">
+                    <img src="https://static.wikia.nocookie.net/freddy-fazbears-pizza/images/4/4d/FNaF3_-_Portada.png/revision/latest?cb=20150126224614&path-prefix=es" class="game-img" alt="FNAF 3">
+                    <div class="game-info">
+                        <span class="item-title">Five Nights at Freddy's 3</span>
+                        <a href="https://vikingfile.com/f/fdkOjFQq3O" target="_blank" class="btn">Descargar ⚡</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.download-section-content');
+            sections.forEach(s => s.style.display = 'none');
+            const catBox = document.getElementById('seccion-categorias');
+            if (sectionId === 'inicio') {
+                catBox.style.display = 'block';
+                document.getElementById('gameSearch').value = '';
+                filterContent(); 
+            } else {
+                document.getElementById('descargas-' + sectionId).style.display = 'block';
+            }
+        }
+
+        function filterContent() {
+            let input = document.getElementById('gameSearch').value.toLowerCase();
+            let items = document.querySelectorAll('.searchable');
+            let sections = document.querySelectorAll('.download-section-content');
+            let catBox = document.getElementById('seccion-categorias');
+            if (input.length > 0) {
+                catBox.style.display = 'none';
+                sections.forEach(s => s.style.display = 'block');
+            } else {
+                catBox.style.display = 'block';
+                sections.forEach(s => s.style.display = 'none');
+            }
+            items.forEach(item => {
+                let text = item.innerText.toLowerCase();
+                item.style.display = text.includes(input) ? "flex" : "none";
+            });
+        }
+    </script>
+</body>
+</html>
