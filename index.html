@@ -34,10 +34,17 @@
             box-shadow: 5px 0 15px rgba(0,0,0,0.5); z-index: 100;
             backdrop-filter: blur(15px); border-right: 1px solid rgba(255,255,255,0.1);
         }
+        
+        /* LOGO ACTUALIZADO: Blanco, solo Pixaroid, fuente Pixel */
         .logo {
-            font-family: 'Press Start 2P', cursive; font-size: 14px;
-            color: #55FF55; margin-bottom: 50px; text-align: center;
+            font-family: 'Press Start 2P', cursive; 
+            font-size: 16px;
+            color: #ffffff; 
+            margin-bottom: 50px; 
+            text-align: center;
+            letter-spacing: 1px;
         }
+
         .menu-item {
             display: flex; align-items: center; gap: 12px; padding: 12px 15px;
             color: #ffffff; text-decoration: none; border-radius: 5px;
@@ -74,6 +81,14 @@
             padding: 40px; border: 1px solid rgba(255,255,255,0.1); 
             width: 100%; max-width: 600px; text-align: center;
             backdrop-filter: blur(10px); animation: fadeIn 0.8s ease;
+        }
+
+        /* TÍTULO CATEGORÍAS ACTUALIZADO: Más grande */
+        .titulo-categorias {
+            color: #00ff88; 
+            font-family: 'Press Start 2P'; 
+            font-size: 20px; /* Aumentado de 14px a 20px */
+            margin-bottom: 35px;
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -131,7 +146,7 @@
     </div>
 
     <div class="sidebar">
-        <div class="logo">PIXAROID<br>GAMES</div>
+        <div class="logo">PIXAROID</div>
         <a onclick="location.reload()" class="menu-item">Inicio</a>
         <a onclick="showSection('juegos')" class="menu-item">Descargas</a>
         <a href="https://discord.gg/aAchPaY5" target="_blank" class="menu-item">
@@ -146,7 +161,7 @@
         </div>
 
         <div class="glass-box" id="seccion-categorias">
-            <h2 style="color: #00ff88; font-family: 'Press Start 2P'; font-size: 14px; margin-bottom: 30px;">CATEGORÍAS</h2>
+            <h2 class="titulo-categorias">CATEGORÍAS</h2>
             <button onclick="showSection('juegos')" class="cat-btn">JUEGOS</button>
             <button onclick="showSection('programas')" class="cat-btn">PROGRAMAS</button>
             <button onclick="showSection('so')" class="cat-btn">SISTEMAS OPERATIVOS</button>
@@ -183,7 +198,6 @@
             let input = document.getElementById('searchInput').value.toLowerCase();
             let items = document.querySelectorAll('.item-list');
             
-            // Si hay texto, mostramos todo para que la búsqueda sea global
             if(input !== "") {
                 document.querySelectorAll('.section-content').forEach(s => s.style.display = 'block');
                 document.getElementById('seccion-categorias').style.display = 'none';
