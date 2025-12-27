@@ -13,25 +13,29 @@
             font-family: 'Poppins', sans-serif;
             background-color: #000;
             color: white; display: flex; min-height: 100vh;
-            overflow-x: hidden;
+            overflow: hidden; /* Evita scrolls raros por el video */
         }
 
-        /* CONTENEDOR DEL VIDEO DE FONDO */
+        /* CONTENEDOR DEL VIDEO DE YOUTUBE */
         .video-background {
             position: fixed;
             top: 0; left: 0;
-            width: 100%; height: 100%;
+            width: 100vw; height: 100vh;
             z-index: -1;
+            pointer-events: none; /* Para que no se pueda clickear el video */
             overflow: hidden;
         }
 
-        #bg-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* EL BLUR QUE PEDISTE */
-            filter: blur(10px) brightness(0.5); 
-            transform: scale(1.1); /* Para evitar bordes blancos por el blur */
+        /* EL IFRAME OCUPA MÁS DEL 100% PARA OCULTAR BORDES NEGROS DE YT */
+        .video-background iframe {
+            width: 150vw;
+            height: 150vh;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* EL BLUR Y EL TONO GRIS */
+            filter: blur(10px) grayscale(0.8) brightness(0.4);
         }
 
         /* BARRA LATERAL */
@@ -39,7 +43,7 @@
             position: fixed; left: 0; top: 0; width: 240px; height: 100%;
             background-color: rgba(0, 0, 0, 0.7); padding: 20px;
             box-shadow: 5px 0 15px rgba(0,0,0,0.5); z-index: 100;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             border-right: 1px solid rgba(255,255,255,0.1);
         }
         .logo {
@@ -49,7 +53,7 @@
         .menu-item {
             display: flex; align-items: center; gap: 12px; padding: 12px 15px;
             color: #ffffff; text-decoration: none; border-radius: 5px;
-            margin-bottom: 8px; font-size: 14px; transition: 0.3s;
+            margin-bottom: 8px; font-size: 14px; transition: all 0.3s ease;
             background: rgba(255,255,255,0.1); cursor: pointer;
         }
         .menu-item svg { width: 20px; height: 20px; fill: #5865F2; }
@@ -60,25 +64,28 @@
             margin-left: 240px; width: calc(100% - 240px);
             display: flex; flex-direction: column; align-items: center;
             justify-content: center; min-height: 100vh; padding: 40px;
+            position: relative; z-index: 10;
         }
 
         .glass-box {
             background-color: rgba(20, 20, 20, 0.6); border-radius: 15px;
             padding: 40px; border: 1px solid rgba(255,255,255,0.1); 
             width: 100%; max-width: 600px; text-align: center;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
             animation: fadeIn 0.8s ease;
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* BOTONES CATEGORÍAS CON ANIMACIÓN */
         .cat-btn {
             width: 100%; padding: 16px; background: rgba(40, 40, 40, 0.8); border: 1px solid #555;
             color: white; border-radius: 10px; cursor: pointer; margin-bottom: 15px;
             font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .cat-btn:hover { background: #f1c40f; color: #000; border-color: #f1c40f; transform: scale(1.02); }
+        .cat-btn:hover { background: #f1c40f; color: #000; border-color: #f1c40f; transform: scale(1.05); }
+        .cat-btn:active { transform: scale(0.95); }
 
         .section-content { display: none; width: 100%; max-width: 600px; margin-top: 20px; }
         
@@ -92,8 +99,9 @@
         .btn-abrir {
             padding: 10px 18px; border-radius: 6px; font-weight: bold; 
             color: #000; background-color: #f1c40f; cursor: pointer; border: none;
-            text-decoration: none; font-size: 13px;
+            text-decoration: none; font-size: 13px; transition: 0.3s;
         }
+        .btn-abrir:hover { background-color: #00ff88; transform: translateY(-2px); }
 
         /* MODALES */
         .modal {
@@ -104,15 +112,13 @@
         .modal-content {
             background-color: rgba(20, 20, 20, 0.95); margin: 5% auto; padding: 30px;
             border: 1px solid #f1c40f; width: 90%; max-width: 500px;
-            border-radius: 20px; max-height: 80vh; overflow-y: auto; color: #fff;
+            border-radius: 20px; max-height: 80vh; overflow-y: auto;
         }
         .close-btn { float: right; font-size: 30px; color: #ff4444; cursor: pointer; }
-        .requisitos { background: rgba(0,255,136,0.1); padding: 15px; border-radius: 10px; border-left: 3px solid #00ff88; margin: 20px 0; }
-        
         .link-descarga {
             display: block; width: 100%; text-align: center; background: #00ff88; 
             color: #000; padding: 15px; text-decoration: none; font-weight: bold; 
-            border-radius: 10px; margin-top: 100px; /* Espacio para obligar a bajar */
+            border-radius: 10px; margin-top: 50px;
         }
 
         @media (max-width: 900px) { .sidebar { display: none; } .main-content { margin-left: 0; width: 100%; } }
@@ -121,10 +127,8 @@
 <body>
 
     <div class="video-background">
-        <video autoplay muted loop playsinline id="bg-video">
-            <source src="https://v1.shared.video/v/97191f630800b6540166668700201010.mp4" type="video/mp4">
-            <source src="https://static.videezy.com/system/resources/previews/000/019/331/original/Dark_Ocean_Waves.mp4" type="video/mp4">
-        </video>
+        <iframe src="https://www.youtube.com/embed/eCHaiEjCDFM?autoplay=1&mute=1&loop=1&playlist=eCHaiEjCDFM&controls=0&showinfo=0&rel=0&iv_load_policy=3" 
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
     <div class="sidebar">
@@ -165,10 +169,8 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal1')">&times;</span>
             <h3 style="color:#f1c40f">FNaF 1: Historia</h3>
-            <p>Sobrevive 5 noches en la pizzería vigilando a Freddy y sus amigos.</p>
-            <div class="requisitos"><h4>Requisitos:</h4><p>RAM: 1GB | Espacio: 250MB</p></div>
-            <p style="color:#777">Baja para ver el link...</p>
-            <a href="https://vikingfile.com/f/SoljjjXKuG" target="_blank" class="link-descarga">LINK: https://vikingfile.com/f/SoljjjXKuG</a>
+            <p>Sobrevive 5 noches en la pizzería vigilando a Freddy.</p>
+            <a href="https://vikingfile.com/f/SoljjjXKuG" target="_blank" class="link-descarga">LINK DE DESCARGA</a>
         </div>
     </div>
 
@@ -176,10 +178,8 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal2')">&times;</span>
             <h3 style="color:#f1c40f">FNaF 2: Historia</h3>
-            <p>Usa la máscara para engañar a los animatrónicos Toy.</p>
-            <div class="requisitos"><h4>Requisitos:</h4><p>RAM: 1GB | Espacio: 300MB</p></div>
-            <p style="color:#777">Baja para ver el link...</p>
-            <a href="https://vikingfile.com/f/s0IDITAnnv" target="_blank" class="link-descarga">LINK: https://vikingfile.com/f/s0IDITAnnv</a>
+            <p>Usa la máscara para engañar a los Toys.</p>
+            <a href="https://vikingfile.com/f/s0IDITAnnv" target="_blank" class="link-descarga">LINK DE DESCARGA</a>
         </div>
     </div>
 
@@ -187,17 +187,20 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal3')">&times;</span>
             <h3 style="color:#f1c40f">FNaF 3: Historia</h3>
-            <p>Springtrap es el único real, pero las alucinaciones te volverán loco.</p>
-            <div class="requisitos"><h4>Requisitos:</h4><p>RAM: 2GB | Espacio: 250MB</p></div>
-            <p style="color:#777">Baja para ver el link...</p>
-            <a href="https://vikingfile.com/f/fdkOjFQq3O" target="_blank" class="link-descarga">LINK: https://vikingfile.com/f/fdkOjFQq3O</a>
+            <p>30 años después, Springtrap vuelve.</p>
+            <a href="https://vikingfile.com/f/fdkOjFQq3O" target="_blank" class="link-descarga">LINK DE DESCARGA</a>
         </div>
     </div>
 
     <script>
         function showSection(id) {
-            document.querySelectorAll('.section-content').forEach(s => s.style.display = 'none');
-            document.getElementById('descargas-' + id).style.display = 'block';
+            document.querySelectorAll('.section-content').forEach(s => {
+                s.style.display = 'none';
+                s.style.animation = 'none';
+            });
+            const active = document.getElementById('descargas-' + id);
+            active.style.display = 'block';
+            active.style.animation = 'fadeIn 0.5s ease';
         }
         function openModal(id) { document.getElementById(id).style.display = "block"; }
         function closeModal(id) { document.getElementById(id).style.display = "none"; }
