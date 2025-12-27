@@ -47,7 +47,9 @@
         }
 
         .menu-item {
-            display: block;
+            display: flex; /* Cambiado a flex para alinear logo y texto */
+            align-items: center;
+            gap: 10px;
             padding: 12px 15px;
             color: #aaa;
             text-decoration: none;
@@ -55,6 +57,12 @@
             margin-bottom: 8px;
             font-size: 14px;
             transition: 0.3s;
+        }
+
+        /* Estilo para el logo de Discord en el menú */
+        .menu-item img {
+            width: 20px;
+            height: auto;
         }
 
         .menu-item:hover {
@@ -92,53 +100,4 @@
             border-left: 4px solid #f1c40f;
         }
 
-        .item-title { font-weight: 600; font-size: 1.2em; display: block; margin-bottom: 15px; }
-        
-        .btn {
-            padding: 10px 18px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
-            transition: 0.2s;
-            color: #000;
-            background-color: #f1c40f;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .btn:hover { transform: scale(1.05); background-color: #f39c12; }
-
-        @media (max-width: 900px) {
-            .sidebar { display: none; }
-            .main-content { margin-left: auto; margin-right: auto; width: 95%; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="sidebar">
-        <div class="logo">PIXAROID<br>GAMES</div>
-        <a href="#" class="menu-item">Inicio</a>
-        <a href="#" class="menu-item">Descargas</a>
-        <a href="https://discord.gg/aAchPaY5" target="_blank" class="menu-item">Discord</a>
-    </div>
-
-    <div class="main-content">
-        <div class="glass-box">
-            <h2>DESCARGAS DISPONIBLES</h2>
-            
-            <div class="item-list">
-                <span class="item-title">Schedule 1</span>
-                <div class="download-section">
-                    <a href="https://vikingfile.com/f/cnPA9V5J6c#Schedule.I.Pixaroid.zip" target="_blank" class="btn">
-                        Viking File ⚡
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
+        .item-title { font-weight: 600; font-size:
