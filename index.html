@@ -69,6 +69,7 @@
             padding: 12px 15px; background-color: #00ff88; color: #000;
             border-radius: 5px; border: none; font-weight: bold;
             font-size: 14px; margin-top: 20px; transition: 0.3s; cursor: pointer;
+            font-family: 'Poppins', sans-serif;
         }
         .donate-btn:hover { background-color: #f1c40f; transform: scale(1.02); }
 
@@ -113,9 +114,9 @@
 
         .btn-abrir { padding: 10px 18px; border-radius: 6px; font-weight: bold; color: #000; background-color: #f1c40f; cursor: pointer; border: none; }
 
-        /* MODALES CORREGIDOS */
+        /* MODALES */
         .modal {
-            display: none; /* OCULTO POR DEFECTO */
+            display: none; 
             position: fixed; z-index: 1000; left: 0; top: 0;
             width: 100%; height: 100%; background-color: rgba(0,0,0,0.85);
             backdrop-filter: blur(15px);
@@ -147,7 +148,9 @@
         <a onclick="location.reload()" class="menu-item">Inicio</a>
         <a onclick="showSection('juegos')" class="menu-item">Descargas</a>
         <a href="https://discord.gg/aAchPaY5" target="_blank" class="menu-item">Discord</a>
+        
         <button class="donate-btn" onclick="openModal('modal-donar')">$ DONAR</button>
+        
         <div class="info-seguridad">Todos los juegos o la mayoria estan escaneados con antivirus diferentes y estan crackeados desde steam.</div>
     </div>
 
@@ -159,6 +162,7 @@
             <button onclick="showSection('programas')" class="cat-btn">PROGRAMAS</button>
             <button onclick="showSection('so')" class="cat-btn">SISTEMAS OPERATIVOS</button>
         </div>
+
         <div id="descargas-juegos" class="section-content">
             <div class="item-list"><span>Five Nights at Freddy's 1</span><button class="btn-abrir" onclick="openModal('modal1')">Descargar ⚡</button></div>
             <div class="item-list"><span>Five Nights at Freddy's 2</span><button class="btn-abrir" onclick="openModal('modal2')">Descargar ⚡</button></div>
@@ -166,7 +170,7 @@
         </div>
         <div id="descargas-programas" class="section-content"><div class="item-list"><span>Próximamente...</span></div></div>
         <div id="descargas-so" class="section-content">
-            <div class="item-list"><span>Windows 10 Pro</span><a href="..." class="btn-abrir">Ir ⚡</a></div>
+            <div class="item-list"><span>Windows 10 Pro</span><a href="https://www.microsoft.com/es-es/software-download/windows10" target="_blank" class="btn-abrir">Ir ⚡</a></div>
         </div>
     </div>
 
@@ -177,11 +181,16 @@
     <div id="modal-donar" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-donar')">&times;</span>
-            <h3 style="color:#00ff88; font-family:'Press Start 2P'; font-size:14px;">APOYAR PROYECTO</h3>
-            <div style="background:rgba(255,255,255,0.1); padding:20px; border-radius:10px; margin-top:20px; border:1px dashed #00ff88;">
-                <span style="font-size:12px; color:#aaa;">MERCADO PAGO</span><br>
-                <strong style="font-size:18px;">eric.salgueiro</strong>
+            <h3 style="color:#00ff88; font-family:'Press Start 2P'; font-size:14px; margin-top:10px;">APOYAR PROYECTO</h3>
+            
+            <div style="background:rgba(255,255,255,0.1); padding:20px; border-radius:15px; margin:25px 0; border:1px dashed #00ff88;">
+                <span style="font-size:11px; color:#aaa; letter-spacing:1px;">MERCADO PAGO (Alias)</span><br>
+                <strong style="font-size:20px; color:#fff; display:block; margin-top:5px;">eric.salgueiro</strong>
             </div>
+
+            <p style="font-size: 13px; color: #00ff88; font-weight: 500; line-height: 1.4;">
+                ¡Tu donación ayuda a que traigamos más juegos!
+            </p>
         </div>
     </div>
 
@@ -193,7 +202,11 @@
         }
         function openModal(id) { document.getElementById(id).style.display = "flex"; }
         function closeModal(id) { document.getElementById(id).style.display = "none"; }
-        window.onclick = (e) => { if(e.target.className === 'modal') e.target.style.display = 'none'; }
+        
+        window.onclick = (e) => { 
+            if(e.target.classList.contains('modal')) e.target.style.display = 'none'; 
+        }
+
         function searchItems() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let items = document.querySelectorAll('.item-list');
