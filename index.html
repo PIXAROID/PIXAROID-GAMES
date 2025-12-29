@@ -126,13 +126,20 @@
         .close-btn { position: absolute; right: 20px; top: 10px; font-size: 30px; color: #ff4444; cursor: pointer; }
         
         .direct-link-box {
-            margin-top: 25px; padding: 15px; background: rgba(255,255,255,0.05);
+            margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05);
             border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);
             word-break: break-all; text-align: left;
         }
         .direct-link-box label { display: block; color: #f1c40f; font-weight: bold; font-size: 13px; margin-bottom: 5px; }
         .direct-link-box a { color: #00ff88; text-decoration: none; font-size: 14px; transition: 0.3s; }
         .direct-link-box a:hover { text-decoration: underline; color: #ffffff; }
+
+        /* Estilo especial para el aviso de versión */
+        .version-info {
+            background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88;
+            color: #fff; padding: 15px; border-radius: 10px; font-size: 13px;
+            margin-bottom: 20px; line-height: 1.5;
+        }
 
         @media (max-width: 900px) { .sidebar { display: none; } .main-content { margin-left: 0; width: 100%; } }
     </style>
@@ -164,6 +171,8 @@
         </div>
 
         <div id="descargas-juegos" class="section-content">
+            <div class="item-list"><span>Schedule I + Online</span><button class="btn-abrir" onclick="openModal('modal-schedule')">Ver Link ⚡</button></div>
+            
             <div class="item-list"><span>Hollow Knight: Silksong</span><button class="btn-abrir" onclick="openModal('modal-silksong')">Ver Link ⚡</button></div>
             <div class="item-list"><span>Five Nights at Freddy's 1</span><button class="btn-abrir" onclick="openModal('modal1')">Ver Link ⚡</button></div>
             <div class="item-list"><span>Five Nights at Freddy's 2</span><button class="btn-abrir" onclick="openModal('modal2')">Ver Link ⚡</button></div>
@@ -177,17 +186,21 @@
         </div>
     </div>
 
-    <div id="modal-silksong" class="modal">
+    <div id="modal-schedule" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-silksong')">&times;</span>
-            <h3 style="font-family:'Press Start 2P'; font-size:14px;">Hollow Knight: Silksong</h3>
+            <span class="close-btn" onclick="closeModal('modal-schedule')">&times;</span>
+            <h3 style="font-family:'Press Start 2P'; font-size:14px; margin-bottom:20px;">Schedule I</h3>
+            <div class="version-info">
+                Esta versión de schedule 1 es la v0.4.2f9 (la mas actual y ademas trae un archivo para el online)
+            </div>
             <div class="direct-link-box">
                 <label>Link directo:</label>
-                <a href="https://vikingfile.com/f/mYyXXG4eGJ" target="_blank">https://vikingfile.com/f/mYyXXG4eGJ</a>
+                <a href="https://vikingfile.com/f/rIRatrqewh" target="_blank">https://vikingfile.com/f/rIRatrqewh</a>
             </div>
         </div>
     </div>
 
+    <div id="modal-silksong" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal-silksong')">&times;</span><h3 style="font-family:'Press Start 2P'; font-size:14px;">Hollow Knight: Silksong</h3><div class="direct-link-box"><label>Link directo:</label><a href="https://vikingfile.com/f/mYyXXG4eGJ" target="_blank">https://vikingfile.com/f/mYyXXG4eGJ</a></div></div></div>
     <div id="modal1" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal1')">&times;</span><h3 style="font-family:'Press Start 2P'; font-size:14px;">FNaF 1</h3><div class="direct-link-box"><label>Link directo:</label><a href="https://vikingfile.com/f/SoljjjXKuG" target="_blank">https://vikingfile.com/f/SoljjjXKuG</a></div></div></div>
     <div id="modal2" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal2')">&times;</span><h3 style="font-family:'Press Start 2P'; font-size:14px;">FNaF 2</h3><div class="direct-link-box"><label>Link directo:</label><a href="https://vikingfile.com/f/s0IDITAnnv" target="_blank">https://vikingfile.com/f/s0IDITAnnv</a></div></div></div>
     <div id="modal3" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal3')">&times;</span><h3 style="font-family:'Press Start 2P'; font-size:14px;">FNaF 3</h3><div class="direct-link-box"><label>Link directo:</label><a href="https://vikingfile.com/f/fdkOjFQq3O" target="_blank">https://vikingfile.com/f/fdkOjFQq3O</a></div></div></div>
