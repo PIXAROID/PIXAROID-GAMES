@@ -134,11 +134,11 @@
         .direct-link-box a { color: #00ff88; text-decoration: none; font-size: 14px; transition: 0.3s; }
         .direct-link-box a:hover { text-decoration: underline; color: #ffffff; }
 
-        /* Estilo especial para el aviso de versión */
+        /* Estilo para los avisos de versión/información */
         .version-info {
             background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88;
             color: #fff; padding: 15px; border-radius: 10px; font-size: 13px;
-            margin-bottom: 20px; line-height: 1.5;
+            margin-bottom: 20px; line-height: 1.5; text-align: left;
         }
 
         @media (max-width: 900px) { .sidebar { display: none; } .main-content { margin-left: 0; width: 100%; } }
@@ -171,8 +171,8 @@
         </div>
 
         <div id="descargas-juegos" class="section-content">
+            <div class="item-list"><span>Gang Beasts</span><button class="btn-abrir" onclick="openModal('modal-gangbeasts')">Ver Link ⚡</button></div>
             <div class="item-list"><span>Schedule I + Online</span><button class="btn-abrir" onclick="openModal('modal-schedule')">Ver Link ⚡</button></div>
-            
             <div class="item-list"><span>Hollow Knight: Silksong</span><button class="btn-abrir" onclick="openModal('modal-silksong')">Ver Link ⚡</button></div>
             <div class="item-list"><span>Five Nights at Freddy's 1</span><button class="btn-abrir" onclick="openModal('modal1')">Ver Link ⚡</button></div>
             <div class="item-list"><span>Five Nights at Freddy's 2</span><button class="btn-abrir" onclick="openModal('modal2')">Ver Link ⚡</button></div>
@@ -183,6 +183,22 @@
         
         <div id="descargas-so" class="section-content">
             <div class="item-list"><span>Windows 10 Pro</span><button class="btn-abrir" onclick="openModal('modal-w10')">Ver Link ⚡</button></div>
+        </div>
+    </div>
+
+    <div id="modal-gangbeasts" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-gangbeasts')">&times;</span>
+            <h3 style="font-family:'Press Start 2P'; font-size:14px; margin-bottom:20px;">Gang Beasts</h3>
+            <div class="version-info">
+                🌐Se puede jugar online? Si de echo esta con archivos dll de steam para que puedas disfrutar del fix. <br><br>
+                🎮 Se puede jugar con Mando? Obvio pero si en este caso no te deja te recomiendo descargarte DS4Win: <br>
+                <a href="https://ds4windows.dev/" target="_blank" style="color:#00ff88; text-decoration:underline;">https://ds4windows.dev/</a>
+            </div>
+            <div class="direct-link-box">
+                <label>Link directo del JUEGO:</label>
+                <a href="https://vikingfile.com/f/Yc4s2mEghS" target="_blank">https://vikingfile.com/f/Yc4s2mEghS</a>
+            </div>
         </div>
     </div>
 
