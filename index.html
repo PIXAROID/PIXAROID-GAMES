@@ -134,11 +134,16 @@
         .direct-link-box a { color: #00ff88; text-decoration: none; font-size: 14px; transition: 0.3s; }
         .direct-link-box a:hover { text-decoration: underline; color: #ffffff; }
 
-        /* Estilo para los avisos de versión/información */
         .version-info {
             background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88;
             color: #fff; padding: 15px; border-radius: 10px; font-size: 13px;
             margin-bottom: 20px; line-height: 1.5; text-align: left;
+        }
+
+        .monetization-msg {
+            background: rgba(241, 196, 15, 0.1); border: 1px solid #f1c40f;
+            color: #fff; padding: 12px; border-radius: 8px; font-size: 12px;
+            margin-top: 15px; line-height: 1.4; text-align: center;
         }
 
         @media (max-width: 900px) { .sidebar { display: none; } .main-content { margin-left: 0; width: 100%; } }
@@ -197,42 +202,21 @@
             </div>
             <div class="direct-link-box">
                 <label>Link directo del JUEGO:</label>
-                <a href="https://vikingfile.com/f/Yc4s2mEghS" target="_blank">https://vikingfile.com/f/Yc4s2mEghS</a>
+                <a href="https://cuty.io/OcKzWzkt" target="_blank">https://cuty.io/OcKzWzkt</a>
+            </div>
+            <div class="monetization-msg">
+                Usamos acortadores para mantener los servidores online. Solo saltá la publicidad y llegarás a tu descarga. ¡Gracias por el apoyo!
             </div>
         </div>
     </div>
 
-    <div id="modal-schedule" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-schedule')">&times;</span>
-            <h3 style="font-family:'Press Start 2P'; font-size:14px; margin-bottom:20px;">Schedule I</h3>
-            <div class="version-info">
-                Esta versión de schedule 1 es la v0.4.2f9 (la mas actual y ademas trae un archivo para el online)
-            </div>
-            <div class="direct-link-box">
-                <label>Link directo:</label>
-                <a href="https://vikingfile.com/f/rIRatrqewh" target="_blank">https://vikingfile.com/f/rIRatrqewh</a>
-            </div>
-        </div>
-    </div>
-
+    <div id="modal-schedule" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal-schedule')">&times;</span><h3 style="font-family:'Press Start 2P'; font-size:14px; margin-bottom:20px;">Schedule I</h3><div class="version-info">Esta versión de schedule 1 es la v0.4.2f9 (la mas actual y ademas trae un archivo para el online)</div><div class="direct-link-box"><label>Link directo:</label><a href="https://vikingfile.com/f/rIRatrqewh" target="_blank">https://vikingfile.com/f/rIRatrqewh</a></div></div></div>
     <div id="modal-silksong" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal-silksong')">&times;</span><h3 style="font-family:'Press Start 2P'; font-size:14px;">Hollow Knight: Silksong</h3><div class="direct-link-box"><label>Link directo:</label><a href="https://vikingfile.com/f/mYyXXG4eGJ" target="_blank">https://vikingfile.com/f/mYyXXG4eGJ</a></div></div></div>
     <div id="modal1" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal1')">&times;</span><h3 style="font-family:'Press Start 2P'; font-size:14px;">FNaF 1</h3><div class="direct-link-box"><label>Link directo:</label><a href="https://vikingfile.com/f/SoljjjXKuG" target="_blank">https://vikingfile.com/f/SoljjjXKuG</a></div></div></div>
     <div id="modal2" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal2')">&times;</span><h3 style="font-family:'Press Start 2P'; font-size:14px;">FNaF 2</h3><div class="direct-link-box"><label>Link directo:</label><a href="https://vikingfile.com/f/s0IDITAnnv" target="_blank">https://vikingfile.com/f/s0IDITAnnv</a></div></div></div>
     <div id="modal3" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal3')">&times;</span><h3 style="font-family:'Press Start 2P'; font-size:14px;">FNaF 3</h3><div class="direct-link-box"><label>Link directo:</label><a href="https://vikingfile.com/f/fdkOjFQq3O" target="_blank">https://vikingfile.com/f/fdkOjFQq3O</a></div></div></div>
     <div id="modal-w10" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal-w10')">&times;</span><h3 style="font-family:'Press Start 2P'; font-size:14px;">Windows 10</h3><div class="direct-link-box"><label>Link directo:</label><a href="https://www.microsoft.com/es-es/software-download/windows10" target="_blank">https://www.microsoft.com/es-es/software-download/windows10</a></div></div></div>
-
-    <div id="modal-donar" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-donar')">&times;</span>
-            <h3 style="color:#00ff88; font-family:'Press Start 2P'; font-size:14px; margin-top:10px;">APOYAR PROYECTO</h3>
-            <div style="background:rgba(255,255,255,0.1); padding:20px; border-radius:15px; margin:25px 0; border:1px dashed #00ff88;">
-                <span style="font-size:11px; color:#aaa;">MERCADO PAGO (Alias)</span><br>
-                <strong style="font-size:20px; color:#fff; display:block; margin-top:5px;">eric.salgueiro</strong>
-            </div>
-            <p style="font-size: 13px; color: #00ff88; font-weight: 500;">¡Tu donación ayuda a que traigamos más juegos!</p>
-        </div>
-    </div>
+    <div id="modal-donar" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('modal-donar')">&times;</span><h3 style="color:#00ff88; font-family:'Press Start 2P'; font-size:14px; margin-top:10px;">APOYAR PROYECTO</h3><div style="background:rgba(255,255,255,0.1); padding:20px; border-radius:15px; margin:25px 0; border:1px dashed #00ff88;"><span style="font-size:11px; color:#aaa;">MERCADO PAGO (Alias)</span><br><strong style="font-size:20px; color:#fff; display:block; margin-top:5px;">eric.salgueiro</strong></div><p style="font-size: 13px; color: #00ff88; font-weight: 500;">¡Tu donación ayuda a que traigamos más juegos!</p></div></div>
 
     <script>
         function showSection(id) {
