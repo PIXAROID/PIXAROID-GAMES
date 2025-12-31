@@ -126,7 +126,7 @@
         .close-btn { position: absolute; right: 20px; top: 10px; font-size: 30px; color: #ff4444; cursor: pointer; }
         
         .direct-link-box {
-            margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05);
+            margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.05);
             border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);
             word-break: break-all; text-align: left;
         }
@@ -137,13 +137,13 @@
         .version-info {
             background: rgba(0, 255, 136, 0.1); border: 1px solid #00ff88;
             color: #fff; padding: 15px; border-radius: 10px; font-size: 13px;
-            margin-bottom: 20px; line-height: 1.5; text-align: left;
+            margin-bottom: 15px; line-height: 1.5; text-align: left;
         }
 
         .monetization-msg {
             background: rgba(241, 196, 15, 0.1); border: 1px solid #f1c40f;
-            color: #fff; padding: 12px; border-radius: 8px; font-size: 12px;
-            margin-top: 15px; line-height: 1.4; text-align: center;
+            color: #fff; padding: 12px; border-radius: 8px; font-size: 11px;
+            margin-top: 10px; line-height: 1.4; text-align: center;
         }
 
         @media (max-width: 900px) { .sidebar { display: none; } .main-content { margin-left: 0; width: 100%; } }
@@ -176,6 +176,7 @@
         </div>
 
         <div id="descargas-juegos" class="section-content">
+            <div class="item-list"><span>Cuphead</span><button class="btn-abrir" onclick="openModal('modal-cuphead')">Ver Link ⚡</button></div>
             <div class="item-list"><span>Gang Beasts</span><button class="btn-abrir" onclick="openModal('modal-gangbeasts')">Ver Link ⚡</button></div>
             <div class="item-list"><span>Schedule I + Online</span><button class="btn-abrir" onclick="openModal('modal-schedule')">Ver Link ⚡</button></div>
             <div class="item-list"><span>Hollow Knight: Silksong</span><button class="btn-abrir" onclick="openModal('modal-silksong')">Ver Link ⚡</button></div>
@@ -191,22 +192,33 @@
         </div>
     </div>
 
-    <div id="modal-gangbeasts" class="modal">
+    <div id="modal-cuphead" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-gangbeasts')">&times;</span>
-            <h3 style="font-family:'Press Start 2P'; font-size:14px; margin-bottom:20px;">Gang Beasts</h3>
+            <span class="close-btn" onclick="closeModal('modal-cuphead')">&times;</span>
+            <h3 style="font-family:'Press Start 2P'; font-size:14px; margin-bottom:20px;">Cuphead</h3>
             <div class="version-info">
-                🌐Se puede jugar online? Si de echo esta con archivos dll de steam para que puedas disfrutar del fix. <br><br>
+                Viene con el DLC? No lamentablemente no pude conseguir el crack ni los archivos del DLC pero viene el juego base completo y esta bastante bueno <br><br>
                 🎮 Se puede jugar con Mando? Obvio pero si en este caso no te deja te recomiendo descargarte DS4Win: <br>
                 <a href="https://ds4windows.dev/" target="_blank" style="color:#00ff88; text-decoration:underline;">https://ds4windows.dev/</a>
             </div>
             <div class="direct-link-box">
-                <label>Link directo del JUEGO:</label>
-                <a href="https://cuty.io/OcKzWzkt" target="_blank">https://cuty.io/OcKzWzkt</a>
+                <label>Link Directo:</label>
+                <a href="https://vikingfile.com/f/VAlLNGYUSJ" target="_blank">https://vikingfile.com/f/VAlLNGYUSJ</a>
             </div>
-            <div class="monetization-msg">
-                Usamos acortadores para mantener los servidores online. Solo saltá la publicidad y llegarás a tu descarga. ¡Gracias por el apoyo!
+            <div class="direct-link-box">
+                <label>Link con acortador para ayudar a traer mas juegos:</label>
+                <a href="https://cuty.io/rRyuzyz5R" target="_blank">https://cuty.io/rRyuzyz5R</a>
             </div>
+        </div>
+    </div>
+
+    <div id="modal-gangbeasts" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-gangbeasts')">&times;</span>
+            <h3 style="font-family:'Press Start 2P'; font-size:14px; margin-bottom:20px;">Gang Beasts</h3>
+            <div class="version-info">🌐Se puede jugar online? Si de echo esta con archivos dll de steam para que puedas disfrutar del fix. <br><br>🎮 Se puede jugar con Mando? Obvio pero si en este caso no te deja te recomiendo descargarte DS4Win: <br><a href="https://ds4windows.dev/" target="_blank" style="color:#00ff88; text-decoration:underline;">https://ds4windows.dev/</a></div>
+            <div class="direct-link-box"><label>Link directo del JUEGO:</label><a href="https://cuty.io/OcKzWzkt" target="_blank">https://cuty.io/OcKzWzkt</a></div>
+            <div class="monetization-msg">Usamos acortadores para mantener los servidores online. Solo saltá la publicidad y llegarás a tu descarga. ¡Gracias por el apoyo!</div>
         </div>
     </div>
 
